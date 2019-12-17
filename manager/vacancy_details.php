@@ -433,26 +433,39 @@ $(document).ready(function(){
 						$index++;
 						$ids = $rs['id'];
 						$ids1 = $rs['no'];
-						
+						$status = $rs['status'];
 						echo "<tr><td>"; echo $index; echo"</td>";
 						echo "<td><a  href='profile_details.php?id=$ids1' onclick='setstatus()' >" ; echo $rs['name']; echo"</a></td>";
 						echo "<td>"; echo $rs['phone'];  echo"</td>";
 						echo "<td>"; echo $rs['email'];  echo"</td>";
-            if($rs['status']=="In-Process")
-            {echo "<td>"; echo $rs['status'];  echo"</td>";}
-            else
+            //if($rs['status']=="In-Process")
+            //{echo "<td>"; echo $rs['status'];  echo"</td>";}
+           // else
             {echo "<td>"; 
-          echo"<form  action='update_status.php?info_id=$ids1' method='POST' >";
-           echo "<select id='status' name='status'  onchange='yesnoCheck(this);'> ";                                         
+          echo"<form  action='update_status.php?no=$ids1' method='POST' >";
+           echo "<select id='status' name='status'  onchange='yesnoCheck(this);'> ";  
+           echo "<option>"; echo $rs['status']; echo"</option selected>";  
+           echo" <option value='Reviewed'>" ; echo'Reviewed';  echo" </option>" ;                                   
            echo" <option value='Accepted'>" ; echo'Accepted';  echo" </option>" ;
            echo" <option value='Rejected'>" ; echo'Rejected';  echo" </option>" ;
            
             echo "</select> "; 
-              echo "<button name='submit' class='btn btn-warning btn-block pull-right'>";echo'Submit'; echo" </button>";
+              echo "<button name='submit'>";echo'Submit'; echo" </button>";
             echo"</td>";}
 
 						echo "<td><a id = 'adds' href='delete_participant.php?info_id=$id&part_id=$ids'><i class='fa fa-trash'></i></a>";
 						echo"</td>";
+          
+
+            // function setstatus() {  
+                  
+                 // if ($rs['status']=="In-Process")
+      
+      
+                  //$sql = "UPDATE vacancy_participant SET status='Reviewed' WHERE no='$no'";
+
+                  
+                //}
 	   }}}
 						echo '</tbody>
 					  </table></div></div>';
