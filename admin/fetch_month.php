@@ -63,11 +63,10 @@ $username = $_SESSION['username'];
 						<tr>
 						  <th>#</th> 
 						  <th>Program</th>
-						  <th>Code</th>
 						  <th>Date</th>
 						  <th>Venue</th>
 						  <th>Time</th>
-						  <th>Category</th>
+						  <th>Preference</th>
 						  <th>Action</th>
 						</tr>
 						</thead>
@@ -90,16 +89,15 @@ $username = $_SESSION['username'];
 						
 						echo "<tr><td>"; echo $index; echo"</td>";
 						echo "<td><a href='info_details.php?info_id=$id'>"; echo $rs['title']; echo"</td>";
-						echo "<td>"; echo $rs['code_title']; echo"</td>";
 						echo "<td>"; echo $rs['date']; echo"</td>";
 						echo "<td>"; echo $rs['venue']; echo"</td>";
 						echo "<td>"; echo $rs['time_from'];echo '-'; echo $rs['time_to']; echo"</td>";
-						if($rs['preference']=='Student'){
+						if($rs['preference']=='Job Seeker'){
 						echo "<td>";
-                        echo "<span class='label label-danger'>";echo $rs['preference']; echo"</span>";echo"</td>";}
-						elseif($rs['preference']=='Manager'){
+                        echo "<span class='label label-default'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+						elseif($rs['preference']=='Employer'){
 						echo "<td>";
-                        echo "<span class='label label-warning'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+                        echo "<span class='label label-info'>";echo $rs['preference']; echo"</span>";echo"</td>";}
 						echo "<td><a id='adds' href='delete_information.php?info_id=".$rs['id']."'><i class='fa fa-trash'></i></a></td>";     
 						echo'
 						';}}}}
@@ -133,11 +131,10 @@ $username = $_SESSION['username'];
                     type: "table",
                     fields: {
                         Program: { type: String },
-                        Code: { type: String },
                         Date: { type: String },
                         Venue: { type: String },
                         Time: { type: String },
-                        Category: { type: String },
+                        Preference: { type: String },
 						
                     }
                 }
@@ -165,13 +162,6 @@ $username = $_SESSION['username'];
                                                 bold: true
                                             },
                                             type: String,
-                                            value: "Code "
-                                        },
-                                        {
-                                            style: {
-                                                bold: true
-                                            },
-                                            type: String,
                                             value: "Date"
                                         },
 										{
@@ -193,7 +183,7 @@ $username = $_SESSION['username'];
                                                 bold: true
                                             },
                                             type: String,
-                                            value: "Category"
+                                            value: "Preference"
                                         },
 										
                                     ]
@@ -202,11 +192,10 @@ $username = $_SESSION['username'];
                                 return {
                                     cells: [
                                         { type: String, value: item.Program },
-                                        { type: String, value: item.Code },
                                         { type: String, value: item.Date },
                                         { type: String, value: item.Venue },
                                         { type: String, value: item.Time },
-                                        { type: String, value: item.Category },
+                                        { type: String, value: item.Preference },
 										
                                     ]
                                 };

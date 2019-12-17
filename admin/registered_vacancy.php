@@ -1,31 +1,31 @@
 <?php
-session_start();
-include('../connection/config.php');
-$no = $_SESSION['no'];
-if(!isset($_SESSION['username']) || $_SESSION['username'] == " ")
-{
-       header("Location: ../index.php");
-       die();
-}
+  session_start();
+  include('../connection/config.php');
+  $no = $_SESSION['no'];
+  if(!isset($_SESSION['username']) || $_SESSION['username'] == " ")
+  {
+         header("Location: ../index.php");
+         die();
+  }
 
-$sql = "SELECT * FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
-$result = mysqli_query($db, $sql);
-$row = mysqli_fetch_array($result);
+  $sql = "SELECT * FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
+  $result = mysqli_query($db, $sql);
+  $row = mysqli_fetch_array($result);
 
-$sqlProfile = "SELECT personal_info.id FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
-$resultProfile = mysqli_query($db, $sqlProfile);
-$rowProfile = mysqli_fetch_array($resultProfile);
+  $sqlProfile = "SELECT personal_info.id FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
+  $resultProfile = mysqli_query($db, $sqlProfile);
+  $rowProfile = mysqli_fetch_array($resultProfile);
 
-$sql_info= "SELECT * FROM vacancy WHERE  no='".$no."'";
-$result_info = mysqli_query($db,$sql_info);
-$rowsInfo = mysqli_fetch_array($result_info);
+  $sql_info= "SELECT * FROM vacancy WHERE  no='".$no."'";
+  $result_info = mysqli_query($db,$sql_info);
+  $rowsInfo = mysqli_fetch_array($result_info);
 
-$no = $rowsInfo['no'];
-$manager = $rowsInfo['manager'];
-$company = $rowsInfo['company'];
-$company_id = $rowsInfo['company_id'];
-
+  $no = $rowsInfo['no'];
+  $manager = $rowsInfo['manager'];
+  $company = $rowsInfo['company'];
+  $company_id = $rowsInfo['company_id'];
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,14 +119,14 @@ input[type=text]:focus {
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
 		
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
+              <i class="fa fa-line-chart"></i> <span>Course</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -147,7 +147,6 @@ input[type=text]:focus {
 		  <ul class="treeview-menu">
               <li><a href="vacancy_list.php"><i class="fa fa-circle-o"></i>Catalog</a></li>
 			  <li><a href="company_list.php"><i class="fa fa-circle-o"></i>Company</a></li>
-              <li><a href="registered_vacancy.php"><i class="fa fa-circle-o"></i>Registered</a></li>
               <li><a href="monthly_report_vacancy.php"><i class="fa fa-circle-o"></i>Details</a></li>
             </ul> 
 		</li>
@@ -196,7 +195,7 @@ input[type=text]:focus {
 			</div>
 			
             <!-- /.box-header -->
-			   <div class="box-body">
+			<div class="box-body">
 			<div class="row">
 			<div class="col-xs-12"> <h3 class="box-title"></h3></div></div>
 			<div id="table-container">
@@ -233,7 +232,7 @@ input[type=text]:focus {
 						if(mysqli_num_rows($result3) > 0){
 						while(($rs=mysqli_fetch_assoc($result3)))
 						{
-						$now = date("m/d/Y");
+						$now = date("d/m/Y");
 						$date =  $rs['date'];	
 	
 						$year = strtotime($date);
@@ -268,7 +267,7 @@ input[type=text]:focus {
 						$year = strtotime($date);
 						$getYear = date("Y", $year);
 						
-						if (($getYear>=$NewYear)&& ($date>=$now) ) {	
+						if (($getYear>=$NewYear) && ($date>=$now) ) {	
 						$index++;
 						$id = $rs['id'];
 						
@@ -289,7 +288,7 @@ input[type=text]:focus {
                         echo "<span class='label label-info'>";echo $rs['category']; echo"</span>";echo"</td>";}
 						elseif($rs['category']=='Operator'){
                         echo "<td>";
-                        echo "<span class='label label-danger'>";echo $rs['default']; echo"</span>";echo"</td>";}
+                        echo "<span class='label label-default'>";echo $rs['default']; echo"</span>";echo"</td>";}
 						echo "<td>"; echo $rs['salary']; echo"</td>";
 						echo "<td>"; echo $rs['experience']; echo"</td>";
 						echo "<td>"; echo $rs['skills']; echo"</td>";

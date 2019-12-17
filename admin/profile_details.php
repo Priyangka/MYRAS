@@ -95,7 +95,7 @@ $row_comp = mysqli_fetch_array($result_comp);
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>

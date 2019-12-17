@@ -49,7 +49,7 @@ if ($_POST['request']){
 						  <th>Name</th>
 						  <th>Phone Number</th>
 						  <th>NRIC</th>
-						  <th>Category</th>
+						  <th>Preference</th>
 						  <th>Action</th>
 						</tr>
 						</thead>
@@ -64,12 +64,12 @@ if ($_POST['request']){
 						echo "<td><a href='profile_details.php?id=$id'>"; echo $rs['name']; echo"</td>";
 						echo "<td>"; echo $rs['phone']; echo"</td>";
 						echo "<td>"; echo $rs['nric']; echo"</td>";
-						if($rs['preference']=='Student'){
+						if($rs['preference']=='Job Seeker'){
 						echo "<td>";
-                        echo "<span class='label label-danger'>";echo $rs['preference']; echo"</span>";echo"</td>";}
-						elseif($rs['preference']=='Manager'){
+                        echo "<span class='label label-default'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+						elseif($rs['preference']=='Employer'){
 						echo "<td>";
-                        echo "<span class='label label-warning'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+                        echo "<span class='label label-info'>";echo $rs['preference']; echo"</span>";echo"</td>";}
 						
 						echo "<td><a id='adds' href='user_approval.php?user_id=".$rs['id']."'><i class='fa fa-trash'></i></a></td>";     
                     

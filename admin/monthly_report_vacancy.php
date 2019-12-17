@@ -115,7 +115,7 @@ $rowProfile = mysqli_fetch_array($resultProfile);
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
@@ -143,8 +143,7 @@ $rowProfile = mysqli_fetch_array($resultProfile);
 		  <ul class="treeview-menu">
               <li><a href="vacancy_list.php"><i class="fa fa-circle-o"></i>Catalog</a></li>
 			  <li><a href="company_list.php"><i class="fa fa-circle-o"></i>Company</a></li>
-              <li><a href="registered_vacancy.php"><i class="fa fa-circle-o"></i>Registered</a></li>
-              <li><a href="monthly_report_vacancy.php"><i class="fa fa-circle-o"></i>Details</a></li>
+             <li><a href="monthly_report_vacancy.php"><i class="fa fa-circle-o"></i>Details</a></li>
             </ul> 
 		</li>
 		

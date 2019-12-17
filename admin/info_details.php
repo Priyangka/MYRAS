@@ -273,14 +273,14 @@ $(document).ready(function(){
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
 		
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
+              <i class="fa fa-line-chart"></i> <span>Course</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -315,7 +315,7 @@ $(document).ready(function(){
     <section class="content-header">
       <br/>
       <h1>
-        Report
+        Course
       </h1>
 
     </section>

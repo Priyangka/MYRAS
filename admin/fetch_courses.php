@@ -49,7 +49,7 @@ if ($_POST['request']){
 						  <th>Title</th>
 						  <th>Date</th>
 						  <th>Venue</th>
-						  <th>Category</th>
+						  <th>Preference</th>
 						  <th>Action</th>
 						</tr>
 						</thead>
@@ -64,12 +64,12 @@ if ($_POST['request']){
 						echo "<td><a href=\"info_details.php?info_id=".$rs['id']."\" class='product-title'>"; echo $rs['title']; echo"</td>";
 						echo "<td>"; echo $rs['date']; echo"</td>";
 						echo "<td>"; echo $rs['venue']; echo"</td>";
-						if($rs['preference']=='Student'){
+						if($rs['preference']=='Job Seeker'){
 						echo "<td>";
-                        echo "<span class='label label-danger'>";echo $rs['preference']; echo"</span>";echo"</td>";}
-						elseif($rs['preference']=='Manager'){
+                        echo "<span class='label label-default'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+						elseif($rs['preference']=='Employer'){
 						echo "<td>";
-                        echo "<span class='label label-warning'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+                        echo "<span class='label label-info'>";echo $rs['preference']; echo"</span>";echo"</td>";}
 
 						echo "<td><a id='adds' href=\"delete_infos.php?info_id=".$rs['id']."\"><i class='fa fa-trash'></i></a></td>";     
                     

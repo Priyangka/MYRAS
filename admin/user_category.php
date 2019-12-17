@@ -123,14 +123,14 @@ $rowProfile = mysqli_fetch_array($resultProfile);
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
 		
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
+              <i class="fa fa-line-chart"></i> <span>Course</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -151,7 +151,6 @@ $rowProfile = mysqli_fetch_array($resultProfile);
 		  <ul class="treeview-menu">
               <li><a href="vacancy_list.php"><i class="fa fa-circle-o"></i>Catalog</a></li>
               <li><a href="company_list.php"><i class="fa fa-circle-o"></i>Company</a></li>
-              <li><a href="registered_vacancy.php"><i class="fa fa-circle-o"></i>Registered</a></li>
               <li><a href="monthly_report_vacancy.php"><i class="fa fa-circle-o"></i>Details</a></li>
             </ul> 
 		</li>
@@ -177,7 +176,7 @@ $rowProfile = mysqli_fetch_array($resultProfile);
        
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">User Category</h3>
+              <h3 class="box-title">User Preference</h3>
             </div>
 			<?php
 			if($result3 = mysqli_query($db,$sql1)){
@@ -187,9 +186,9 @@ $rowProfile = mysqli_fetch_array($resultProfile);
 			if($rs['username']=='admin'){
 			echo '<div class="box-header with-border">
 					<select id="fetchval" name="fetchby" type="text" class="form-control input-sm select2" >
-						<option value="">Select Category...</option>
-						<option value="Student">Student</option>
-						<option value="Manager">Manager</option>
+						<option value="">Select Preference...</option>
+						<option value="Job Seeker">Job Seeker</option>
+						<option value="Employer">Employer</option>
 		
 					</select>
             </div>';
@@ -212,7 +211,7 @@ $rowProfile = mysqli_fetch_array($resultProfile);
 						  <th>Name</th>
 						  <th>Phone Number</th>
 						  <th>NRIC</th>
-						  <th>Category</th>
+						  <th>Preference</th>
 						  <th>Change</th>
 						</tr>
 						</thead>
@@ -229,12 +228,12 @@ $rowProfile = mysqli_fetch_array($resultProfile);
 						echo "<td><a href='profile_details.php?id=$id'>"; echo $rs['name']; echo"</td>";
 						echo "<td>"; echo $rs['phone']; echo"</td>";
 						echo "<td>"; echo $rs['nric']; echo"</td>";
-						if($rs['preference']=='Student'){
+						if($rs['preference']=='Job Seeker'){
 						echo "<td>";
-                        echo "<span class='label label-danger'>";echo $rs['preference']; echo"</span>";echo"</td>";}
-						elseif($rs['preference']=='Manager'){
+                        echo "<span class='label label-default'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+						elseif($rs['preference']=='Employer'){
 						echo "<td>";
-                        echo "<span class='label label-warning'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+                        echo "<span class='label label-info'>";echo $rs['preference']; echo"</span>";echo"</td>";}
 
 						echo "<td><a href='user_approval.php?user_id=".$rs['id']."'><i id='bins' class='fa fa-trash'></i></a></td>";     
 						}}}

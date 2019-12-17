@@ -442,11 +442,13 @@ $(document).ready(function(){
             {echo "<td>"; echo $rs['status'];  echo"</td>";}
             else
             {echo "<td>"; 
-           echo "<select id='status' onchange='update_status.php'> ";                                         
-           echo" <option value='Accepted'>" ; echo'Accepted';
-           echo" <option value='Rejected'>" ; echo'Rejected';
+          echo"<form  action='update_status.php?info_id=$ids1' method='POST' >";
+           echo "<select id='status' name='status'  onchange='yesnoCheck(this);'> ";                                         
+           echo" <option value='Accepted'>" ; echo'Accepted';  echo" </option>" ;
+           echo" <option value='Rejected'>" ; echo'Rejected';  echo" </option>" ;
            
             echo "</select> "; 
+              echo "<button name='submit' class='btn btn-warning btn-block pull-right'>";echo'Submit'; echo" </button>";
             echo"</td>";}
 
 						echo "<td><a id = 'adds' href='delete_participant.php?info_id=$id&part_id=$ids'><i class='fa fa-trash'></i></a>";
@@ -590,4 +592,4 @@ jQuery(function ($) {
 
 	
 </body>
-</html
+</html>

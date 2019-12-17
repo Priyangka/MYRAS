@@ -1,25 +1,39 @@
 <?php
-session_start();
-include('../connection/config.php');
-$no = $_SESSION['no'];
-$sql = "SELECT * FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
-$result = mysqli_query($db, $sql);
-$row = mysqli_fetch_array($result);
-$image_src2 = $row['image'];
-$idd = $row['level'];
+  session_start();
+  include('../connection/config.php');
+  $no = $_SESSION['no'];
+  $sql = "SELECT * FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
+  $result = mysqli_query($db, $sql);
+  $row = mysqli_fetch_array($result);
+  $image_src2 = $row['image'];
+  $idd = $row['level'];
 
-$sqlProfile = "SELECT personal_info.no FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
-$resultProfile = mysqli_query($db, $sqlProfile);
-$rowProfile = mysqli_fetch_array($resultProfile);
+  $sqlProfile = "SELECT personal_info.no FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
+  $resultProfile = mysqli_query($db, $sqlProfile);
+  $rowProfile = mysqli_fetch_array($resultProfile);
 
-$id=$_GET['vacancy_id']; 
+  // Query from table company//////////////////////////
+  $id=$_GET['vacancy_id']; 
 
-$sql_info= "SELECT * FROM company WHERE  id='".$id."'";
-$result_info = mysqli_query($db,$sql_info);
-$rowsInfo = mysqli_fetch_array($result_info);
+  $sql_info= "SELECT * FROM company WHERE  id='".$id."'";
+  $result_info = mysqli_query($db,$sql_info);
+  $rowsInfo = mysqli_fetch_array($result_info);
 
 
+  // Query from table vacancy//////////////////////////
+  $id=$_GET['company_id']; 
+
+  $SQL_INFO= "SELECT * FROM vacancy WHERE  id='".$id."'";
+  $RESULT_INFO = mysqli_query($db,$SQL_INFO);
+  $ROWSINFO = mysqli_fetch_array($RESULT_INFO);
+
+  $no = $ROWSINFO['no'];
+  $manager = $ROWSINFO['manager'];
+  $company = $ROWSINFO['company'];
+  $company_id = $ROWSINFO['company_id'];
+  /////////////////////////////////////////////////////
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,20 +54,15 @@ $rowsInfo = mysqli_fetch_array($result_info);
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
-<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+
 <script>
     //Date picker
     $('#datepicker').datepicker({
@@ -87,6 +96,7 @@ $rowsInfo = mysqli_fetch_array($result_info);
     })
   })
 </script>
+
 <script type="text/javascript">
 function ShowHideDiv() {
         var chkYes = document.getElementById("chkYes");
@@ -123,6 +133,7 @@ $(document).ready(function(){
 						});
 						
 </script>
+
 <style>
   article, aside, figure, footer, header, hgroup, 
   menu, nav, section { display: block; }
@@ -132,6 +143,7 @@ $(document).ready(function(){
 .pagination > li > a, .pagination > li > span { color: grey; // use your own color here }
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover { background-color: orange; border-color: orange; }
 </style>
+
 <style>
   article, aside, figure, footer, header, hgroup, 
   menu, nav, section { display: block; }
@@ -139,6 +151,7 @@ $(document).ready(function(){
 .pagination > li > a, .pagination > li > span { color: grey; // use your own color here }
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover { background-color: orange; border-color: orange; }
 </style>
+
 <style>
 .dl-horizontal dt { text-align: left; }
 .navbar-brand {padding: 0px;}
@@ -229,6 +242,8 @@ $(document).ready(function(){
     min-width:100%;
 }
 </style>
+
+<!-- start body -->
 <body class="hold-transition skin-yellow sidebar-mini">
 <div class="wrapper">
  <header class="main-header">
@@ -276,14 +291,14 @@ $(document).ready(function(){
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
 		
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
+              <i class="fa fa-line-chart"></i> <span>Course</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -304,7 +319,6 @@ $(document).ready(function(){
 		  <ul class="treeview-menu">
               <li><a href="vacancy_list.php"><i class="fa fa-circle-o"></i>Catalog</a></li>
 			  <li><a href="company_list.php"><i class="fa fa-circle-o"></i>Company</a></li>
-              <li><a href="registered_vacancy.php"><i class="fa fa-circle-o"></i>Registered</a></li>
               <li><a href="monthly_report_vacancy.php"><i class="fa fa-circle-o"></i>Details</a></li>
             </ul> 
 		</li>
@@ -332,28 +346,23 @@ $(document).ready(function(){
 
            <div class="card sticky-top" >
 		  <div class="col-md-7 ">
-			<div class="card-body"><h5 class="card-title"> <?php  if ($rowsInfo['title']!=''){echo $rowsInfo['title'];} ?></h5>
-			</div>
-			<form class="form-horizontal" action="edit_company_info.php" method="POST" enctype="multipart/form-data">
+			 <div class="card-body"><h5 class="card-title"> <?php  if ($rowsInfo['title']!=''){echo $rowsInfo['title'];} ?></h5></div>
+			 <form class="form-horizontal" action="edit_company_info.php" method="POST" enctype="multipart/form-data">
 
 			<?php
 				$str = $rowsInfo['description'];
 				$strArray = explode('.', $str);
 				$str1 = $strArray[0] . '. ' . $strArray[1] . '.'. $strArray[2] . '.';
 				$str2 = $strArray[2] . '.';
-			    echo'</a><div class="card-body">';
-				echo "<ul class='products-list product-list-in-box'>
-                <li class='item'>";
-					echo"<p class='card-text text-justify'>";
-					echo $rowsInfo['description'];
-                    echo "
-                    </li>
-				    </ul>"; 
-			       echo '</div>';	
-				
-				  
+			  echo '</a><div class="card-body">';
+				echo "<ul class='products-list product-list-in-box'><li class='item'>";
+				echo "<p class='card-text text-justify'>";
+				echo $rowsInfo['description'];
+        echo "</li></ul>"; 
+			  echo '</div>';	 
 			?>
 		  </div>
+
 		   <div class="col-md-5 ">
 		   		<?php
 			    echo'<div class="card-body">';
@@ -398,31 +407,25 @@ $(document).ready(function(){
 				echo'<div class="col-md-4">'.$rowsInfo['days'].'</div>';
 				echo'<div class="col-md-2 pull-left"><b>Working Days</b></div>';
 				echo'<div class="col-md-4">'.$rowsInfo['time_from'].' to '.$rowsInfo['time_to'].'</div><br/><br/>';
-			    echo'<div class="col-md-2 pull-left"><b>Company Size</b></div>';
+			  echo'<div class="col-md-2 pull-left"><b>Company Size</b></div>';
 				echo'<div class="col-md-4">'.$rowsInfo['size'].' Employees</div>';
 				echo'<div class="col-md-2 pull-left"><b>Benefits</b></div>';
 				echo'<div class="col-md-4">'.$rowsInfo['benefits'].'</div><br/><br/>';
 				echo'<div class="col-md-2 pull-left"><b>Address</b></div>';
 				echo'<div class="col-md-4 text-justify">'.$rowsInfo['comp_address'].'</div>';
-			
-                    echo "
-                    </li>
-				    </ul>"; 
-			    echo '</div>';
+			  echo "</li></ul>"; 
+			  echo '</div>';
 			
 			?>
-		 
-		 
 		  </div>
 			</div>
 			</div>
 
-                 
-			  
               </div>
               </div>
               <!-- /.box-footer -->
             </form>
+
 			</div> <!--box -->
       </div>    <!--col-md-12 -->
 	
@@ -433,6 +436,94 @@ $(document).ready(function(){
     </section>
 </div>
 </div>
+
+<!-- Add the registered_vacancy.php source code -->
+<!-- Query from table vacancy ------------------------------------------------------------------------------------------------->
+
+ <div class="content-wrapper">
+  <section class="content-header">
+      <br/>
+      <h1>List of Company Vacancy</h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+      <div class="box box-warning">
+          <div class="box-header with-border">
+            <h3 class="box-title">Vacancy List</h3>
+          </div><!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-xs-12"> <h3 class="box-title"></h3>
+          </div>
+        </div>
+        <div id="table-container">
+            <?php 
+           
+
+              // Create Connection
+              $servername = "localhost";
+              $user = "root"; //server: codeviab_thesis
+              $pass = ""; //server: Thesis1234
+              $dbname = "myras"; //server: codeviab_thesis
+              $port = 8889;
+
+              $conn = mysqli_connect($servername,$user,$pass,$dbname);
+
+              if (!$conn) {
+                  echo "Error: Unable to connect to MySQL." . PHP_EOL;
+                  echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+                  echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+                  exit;
+              }
+
+              $sql = "SELECT * from vacancy";
+              $result = $conn->query($sql);
+
+              if ($result -> num_rows > 0) {
+                echo '<table id="myTable" class="table table-bordered table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>Position</th>
+                                      <th>Category</th>
+                                      <th>Salary</th>
+                                      <th>Experience</th>
+                                      <th>Skills</th>
+                                      <th>Total Application</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>';
+
+                while($row = $result -> fetch_assoc()) {
+                echo "<tr><td>" . $row['position'] . "</td><td>" . $row['category'] . "</td><td>" . $row['salary'] .
+                     "</td><td>". $row['experience'] . "</td><td>" . $row['skills'] . "</td></tr>";
+              }
+              echo "</tbody>";
+              echo "</table>";
+              } else {
+                echo "0 results";
+              }
+            
+
+              
+
+            ?>
+
+        </div>
+      </div><!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<!-- END OF query from table vacancy ------------------------------------------------------------------------------------------------->
 
 <script>
   $(function () {

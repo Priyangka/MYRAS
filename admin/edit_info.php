@@ -213,14 +213,14 @@ $rowsInfo = mysqli_fetch_array($result_info);
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
 		
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
+              <i class="fa fa-line-chart"></i> <span>Course</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -256,7 +256,7 @@ $rowsInfo = mysqli_fetch_array($result_info);
     <section class="content-header">
       <br/>
       <h1>
-        Report
+        Course
       </h1>
 
     </section>
@@ -283,58 +283,34 @@ $rowsInfo = mysqli_fetch_array($result_info);
 							  <div class="col-sm-8">
 							  <select id="title" name="title" class="form-control select2" style="width: 100%;">
 							  <option value="<?php echo $rowsInfo['title']; ?>"><?php echo $rowsInfo['title']; ?></option selected>
-							  <option value="Introduction to ARM-Android Based Controller ">Introduction to ARM-Android Based Controller </option>
-							  <option value="Humanoid Robot Concept and Development Process ">Humanoid Robot Concept and Development Process </option>
-							  <option value="Embedded System Design and Implementation with Arduino and EasyLAB ">Embedded System Design and Implementation with Arduino and EasyLAB </option>
-							  <option value="Introduction to SCARA Robot ">Introduction to SCARA Robot </option>
-							  <option value="PLC Operation and Basic Programming ">PLC Operation and Basic Programming </option>
-							  <option value="Robot Operating System ">Robot Operating System </option>
-							  <option value="Toward Quality Certification ISO 9001/TS 16949 ">Toward Quality Certification ISO 9001/TS 16949 </option>
-							  <option value="Performance Measurement Benchmarking ">Performance Measurement Benchmarking </option>
-							  <option value="System and Process Enhancement ">System and Process Enhancement </option>
-							  <option value="Six Sigma Awareness for Top Management ">Six Sigma Awareness for Top Management </option>
-							  <option value="Six Sigma Awareness for Process Owners">Six Sigma Awareness for Process Owners </option>
-							  <option value="WorldSkills Mechatronics ">WorldSkills Mechatronics </option>
-							  <option value="WorldSkills Mobile Robotics ">WorldSkills Mobile Robotics </option>
-							  <option value="WorldSkills Electronics ">WorldSkills Electronics </option>
-							  <option value="WorldSkills Industrial Control ">WorldSkills Industrial Control </option>
-							  <option value="WorldSkills CAD ">WorldSkills CAD </option>
+							  <option value="Introduction to ARM-Android Based Controller ">Introduction to ARM-Android Based Controller (GCP12121AR) </option>
+							  <option value="Humanoid Robot Concept and Development Process ">Humanoid Robot Concept and Development Process (GCP12321HM) </option>
+							  <option value="Embedded System Design and Implementation with Arduino and EasyLAB ">Embedded System Design and Implementation with Arduino and EasyLAB (GCP12521SD) </option>
+							  <option value="Introduction to SCARA Robot ">Introduction to SCARA Robot (GCP12421SC) </option>
+							  <option value="PLC Operation and Basic Programming ">PLC Operation and Basic Programming (GCP12521PL) </option>
+							  <option value="Robot Operating System ">Robot Operating System (GCP12321RS) </option>
+							  <option value="Toward Quality Certification ISO 9001/TS 16949 ">Toward Quality Certification ISO 9001/TS 16949 (GCP12231QC) </option>
+							  <option value="Performance Measurement Benchmarking ">Performance Measurement Benchmarking (GCP12331BM) </option>
+							  <option value="System and Process Enhancement ">System and Process Enhancement (GCP12431SP) </option>
+							  <option value="Six Sigma Awareness for Top Management ">Six Sigma Awareness for Top Management (GCP12531ST) </option>
+							  <option value="Six Sigma Awareness for Process Owners">Six Sigma Awareness for Process Owners (GCP12331SO) </option>
+							  <option value="WorldSkills Mechatronics ">WorldSkills Mechatronics (GCP13121MT) </option>
+							  <option value="WorldSkills Mobile Robotics ">WorldSkills Mobile Robotics (GCP13121MB) </option>
+							  <option value="WorldSkills Electronics ">WorldSkills Electronics (GCP13121ET) </option>
+							  <option value="WorldSkills Industrial Control ">WorldSkills Industrial Control (GCP13121IC) </option>
+							  <option value="WorldSkills CAD ">WorldSkills CAD (GCP13121CA) </option>
 							</select>
 						  </div>
 						  </div>
 			
-						<div class="form-group">
-							  <label  for="inputEmail3" class="col-sm-2 control-label">Program Code</label>
-							  <div class="col-sm-8">
-							  <select id="code_title" name="code_title" class="form-control select2" style="width: 100%;">
-							  <option value="<?php echo $rowsInfo['code_title']; ?>"><?php echo $rowsInfo['code_title']; ?></option selected>
-							  <option value="GCP12121AR">GCP12121AR</option>
-							  <option value="GCP12321HM">GCP12321HM</option>
-							  <option value="GCP12521SD">GCP12521SD</option>
-							  <option value="GCP12421SC">GCP12421SC</option>
-							  <option value="GCP12521PL">GCP12521PL</option>
-							  <option value="GCP12321RS">GCP12321RS</option>
-							  <option value="GCP12231QC">GCP12231QC</option>
-							  <option value="GCP12331BM">GCP12331BM</option>
-							  <option value="GCP12431SP">GCP12431SP</option>
-							  <option value="GCP12531ST">GCP12531ST</option>
-							  <option value="GCP12331SO">GCP12331SO</option>
-							  <option value="GCP13121MT">GCP13121MT</option>
-							  <option value="GCP13121MB">GCP13121MB</option>
-							  <option value="GCP13121ET">GCP13121ET</option>
-							  <option value="GCP13121IC">GCP13121IC</option>
-							  <option value="GCP13121CA">GCP13121CA</option>
-							</select>
-						  </div>
-						  </div> 
-								  
+						
 				      <div class="form-group">
-										<label  for="inputEmail3" class="col-sm-2 control-label">Category</label>
+										<label  for="inputEmail3" class="col-sm-2 control-label">Participant</label>
 										  <div class="col-sm-8">
 										  <select onchange="yesnoCheck(this);" id="preference" name="preference" class="form-control select2" style="width: 100%;">
 							              <option value="<?php echo $rowsInfo['preference']; ?>"><?php echo $rowsInfo['preference']; ?></option selected>
-										  <option value="Student">Student</option>
-										  <option value="Manager">Manager</option>
+										  <option value="Job Seeker">Job Seeker</option>
+										  <option value="Employer">Employer</option>
 										</select>
 									  </div>
 									  </div>
@@ -395,27 +371,7 @@ $rowsInfo = mysqli_fetch_array($result_info);
 								  </div>
 								</div>
 				
-						<div class="form-group control-label">
-							<label class="col-sm-2">Required Registration Form?</label>
-								<div class="col-sm-1">
-									<label for="chkY">
-									<input type="radio" id="chkY" name="chk" <?php if($rowsInfo['chk'] =='chkY'){ ?> checked="checked" <?php } ?> value="chkY" />
-									Yes
-									</label>
-									</div>
-									<div class="col-sm-1">
-									<label for="chkN">
-									<input type="radio" id="chkN"  name="chk"  <?php if($rowsInfo['chk'] == 'chkN'){ ?> checked="checked" <?php } ?> value="chkN" />
-									No
-									</label>
-									<div id="dvtext" style="display: none">
-									<a href="reg_form_info.php">
-									<!--<input type="text" id="txtBox" />-->
-							</div>
-							</div>
-						</div>
-								  </div>
-			
+						
 							
 							<input type="hidden" name="no" id="no" value="<?php echo $no; ?>">
 							<input type="hidden" name="id" id="id" value="<?php echo $rowsInfo['id']; ?>">

@@ -181,14 +181,14 @@ $rowProfile = mysqli_fetch_array($resultProfile);
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
 		
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
+              <i class="fa fa-line-chart"></i> <span>Course</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -209,7 +209,6 @@ $rowProfile = mysqli_fetch_array($resultProfile);
 		  <ul class="treeview-menu">
               <li><a href="vacancy_list.php"><i class="fa fa-circle-o"></i>Catalog</a></li>
 			  <li><a href="company_list.php"><i class="fa fa-circle-o"></i>Company</a></li>
-              <li><a href="registered_vacancy.php"><i class="fa fa-circle-o"></i>Registered</a></li>
               <li><a href="monthly_report_vacancy.php"><i class="fa fa-circle-o"></i>Details</a></li>
             </ul> 
 		</li>
@@ -239,12 +238,13 @@ $rowProfile = mysqli_fetch_array($resultProfile);
                 <h3 class="box-title">Current Vacancy</h3> 
             </a>
 		
-				<h3 class="box-title pull-right"><?php if($row['level']=='admin' ||$row['level']=='manager' ){echo "<a href='add_vacancy.php' id='adds'> <i class='fa fa-plus-square fa-fw'></i></a>";} ?></h3>
+				<h3 class="box-title pull-right"><?php if($row['level']=='admin' ||$row['level']=='Employer' )
+        {echo "<a href='add_vacancy.php' id='adds'> <i class='fa fa-plus-square fa-fw'></i></a>";} ?></h3>
               </div>
 	
               <div class="box-body">
              <?php
-			 $now = date("m/d/Y");
+			 $now = date("d/m/Y");
 			 $sqlv = "SELECT * FROM vacancy ORDER BY date desc" ;
 			 
 				$result3 = mysqli_query($db,$sqlv);
@@ -256,21 +256,20 @@ $rowProfile = mysqli_fetch_array($resultProfile);
 				if(mysqli_num_rows($result3) > 0){
 				while(($rs=mysqli_fetch_assoc($result3)))
 				{
-					$now = date("m/d/Y");
+					$now = date("d/m/Y");
 					$date =  $rs['date'];	
 					
 					$year = strtotime($date);
 					$getYear = date("Y", $year);
 					$NewYear = date("Y");
 					
-					if (($getYear>=$NewYear)&& ($date>=$now) ) {	
+					if (($getYear>=$NewYear) || ($date>=$now) ) {	
 					echo '<div class="card " ></a><div class="card-body">';
 					echo "<ul class='products-list product-list-in-box'>
 					<li class='item'>";
                     echo "<h5 class='card-title'>";
 					echo "<a href=\"vacancy_details.php?vacancy_id=".$rs['id']."\" class='product-title'>"; echo $rs['position'];
-   					echo"</a><a href=\"delete_vacan.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h5>";
-					//echo"<h3><a href=\"delete_info.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h3>";
+   					//echo"<h3><a href=\"delete_info.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h3>";
                    	echo"<h5 class='card-text text-muted mb-2'>";
 					if($rs['category']=='Manager'){
                         echo "<span class='label label-danger'>";echo $rs['category']."</span><br/><td></td>";}
@@ -322,25 +321,26 @@ $rowProfile = mysqli_fetch_array($resultProfile);
 					
 					$NewYear = date("Y");
 					
-					$now = date("m/d/Y");
+					$now = date("d/m/Y");
 					$date =  $rs['date'];		
-					if (($date < $now)|| $getYear>$NewYear) {
+					if (($date < $now) && $getYear<$NewYear) {
 				    echo '<div class="card " ></a><div class="card-body">';
 					echo "<ul class='products-list product-list-in-box'>
 					<li class='item'>";
                     echo "<h5 class='card-title'>";
 					echo "<a href=\"vacancy_details.php?vacancy_id=".$rs['id']."\" class='product-title'>"; echo $rs['title'];
-   					echo"</a><a href=\"delete_vacan.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h5>";
-					//echo"<h3><a href=\"delete_info.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h3>";
+   					//echo"<h3><a href=\"delete_info.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h3>";
                    	echo"<h5 class='card-text text-muted mb-2'>";
-					if($rs['preference']=='Engineer'){
-                        echo "<span class='label label-danger'>";echo $rs['preference']."</span><br/><td></td>";}
-						elseif($rs['preference']=='Manager'){
-                        echo "<span class='label label-warning'>";echo $rs['preference']."</span><br/><td></td>";}
-						elseif($rs['preference']=='Operator'){
-                        echo "<span class='label label-success'>";echo $rs['preference']."</span><br/><td></td>";}
-						elseif($rs['preference']=='Technical'){
-                        echo "<span class='label label-info'>";echo $rs['preference']."</span><br/><td></td>";}
+					if($rs['category']=='Manager'){
+                        echo "<span class='label label-danger'>";echo $rs['category']."</span><br/><td></td>";}
+						elseif($rs['category']=='Engineer'){
+                        echo "<span class='label label-warning'>";echo $rs['category']."</span><br/><td></td>";}
+						elseif($rs['category']=='Technician'){
+                        echo "<span class='label label-success'>";echo $rs['category']."</span><br/><td></td>";}
+						elseif($rs['category']=='Supervisor'){
+                        echo "<span class='label label-info'>";echo $rs['category']."</span><br/><td></td>";}
+            elseif($rs['category']=='Operator'){
+                        echo "<span class='label label-default'>";echo $rs['category']."</span><br/><td></td>";}
 						echo'<p></p>';
 					echo $rs['date'].'<br/>';
 					echo $rs['venue'];

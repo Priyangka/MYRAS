@@ -11,14 +11,16 @@ $vacancy_id=$_POST['vacancy_id'];
 $phone=$_POST['phone'];
 $status=$_POST['status'];
 
-  if (isset($_POST['status']))
+  if (isset($_POST['submit']))
   {
- $sql = "UPDATE vacancy_participant SET status="$status" WHERE id='$id'";
+ $sql = "UPDATE vacancy_participant SET status='$status' WHERE vacancy_id='$vacancy_id'";
 
 
  
   if (mysqli_query($db, $sql)) {
-	  header('location:vacancy_list.php');
+  	  echo 'vacancy_id';
+	 //header('location:vacancy_details.php?vacancy_id='.$vacancy_id);
+
 	} else {
 		echo "Error: " . $sql . "<br>" . mysqli_error($db);
 	}

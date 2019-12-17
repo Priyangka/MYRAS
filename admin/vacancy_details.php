@@ -277,14 +277,14 @@ $(document).ready(function(){
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
 		
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
+              <i class="fa fa-line-chart"></i> <span>Course</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -367,7 +367,7 @@ $(document).ready(function(){
 				echo'<div class="col-md-2 pull-left"><b>Closing Date</b></div>';
 				echo'<div class="col-md-4">'.$rowsInfo['date'].'</div><br/><br/><br/>';
 			    echo'<div class="col-md-2 pull-left"><b>Basic Skills</b></div>';
-				echo'<div class="col-md-10">'.$rowsInfo['skills'].' Employees</div><br/><br/><br/><br/>';
+				echo'<div class="col-md-10">'.$rowsInfo['skills'].'</div><br/><br/><br/><br/>';
 				echo'<div class="col-md-2 pull-left"><b>Additional Requirements</b></div>';
 				echo'<div class="col-md-10">'.$rowsInfo['description'].'</div><br/><br/>';
 		
@@ -377,9 +377,7 @@ $(document).ready(function(){
 				    </ul>"; 
 			    echo '</div><br/>';
 				 echo'<div class="card-body">';
-				echo "<ul class='products-list product-list-in-box'>
-                <li class='item'>";
-				    echo "<a href=\"edit_vacancy.php?info_id=".$rowsInfo['id']."\"   class='btn btn-warning card-link col-md-1'>Edit Info</a>";
+				
                     echo "
                     </li>
 				    </ul>"; 

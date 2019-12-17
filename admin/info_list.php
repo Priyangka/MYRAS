@@ -185,14 +185,14 @@ $row_comp = mysqli_fetch_array($result_comp);*/
             </a>
 		  <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
+              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Preference</a></li>
               <li><a href="courses.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
 		</li>
 		
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
+              <i class="fa fa-line-chart"></i> <span>Course</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -227,7 +227,7 @@ $row_comp = mysqli_fetch_array($result_comp);*/
      <section class="content-header">
       <br/>
       <h1>
-       Report
+       Course
       </h1>
     </section>
 	
@@ -258,14 +258,14 @@ $row_comp = mysqli_fetch_array($result_comp);*/
 				if(mysqli_num_rows($result3) > 0){
 				while(($rs=mysqli_fetch_assoc($result3)))
 				{
-					$now = date("m/d/Y");
+					$now = date("d/m/Y");
 					$date =  $rs['date'];	
 
 					$year = strtotime($date);
 					$getYear = date("Y", $year);
 					$NewYear = date("Y");
 					
-					if (($getYear>=$NewYear)&& ($date>=$now) ) {	
+					if (($getYear>=$NewYear) || ($date>=$now) ) {	
 					echo '<div class="card " ></a><div class="card-body">';
 					echo "<ul class='products-list product-list-in-box'>
 					<li class='item'>";
@@ -274,12 +274,12 @@ $row_comp = mysqli_fetch_array($result_comp);*/
    					echo"</a><a href=\"delete_info.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h5>";
 					//echo"<h3><a href=\"delete_info.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h3>";
                    	echo"<h5 class='card-text text-muted mb-2'>";
-					if($rs['preference']=='Student'){
+					if($rs['preference']=='Job Seeker'){
 						echo "<td>";
-                        echo "<span class='label label-danger'>";echo $rs['preference']; echo"</span>";echo"</td>";}
-						elseif($rs['preference']=='Manager'){
+                        echo "<span class='label label-default'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+						elseif($rs['preference']=='Employer'){
 						echo "<td>";
-                        echo "<span class='label label-warning'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+                        echo "<span class='label label-info'>";echo $rs['preference']; echo"</span>";echo"</td>";}
 
 						echo'<p></p>';
 					echo $rs['date'].'<br/>';
@@ -341,9 +341,9 @@ $row_comp = mysqli_fetch_array($result_comp);*/
 					
 					$NewYear = date("Y");
 					
-					$now = date("m/d/Y");
+					$now = date("d/m/Y");
 					$date =  $rs['date'];		
-					if (($date < $now)|| $getYear>$NewYear) {
+					if (($date < $now) && $getYear<$NewYear) {
 				    echo '<div class="card " ></a><div class="card-body">';
 					echo "<ul class='products-list product-list-in-box'>
 					<li class='item'>";
@@ -352,12 +352,12 @@ $row_comp = mysqli_fetch_array($result_comp);*/
    					echo"</a><a href=\"delete_info.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h5>";
 					//echo"<h3><a href=\"delete_info.php?info_id=".$rs['id']."\" class='product-title' id='adds'><span class='glyphicon glyphicon-remove-sign pull-right' id='adds'></a></span></h3>";
                    	echo"<h5 class='card-text text-muted mb-2'>";
-					if($rs['preference']=='Student'){
+					if($rs['preference']=='Job Seeker'){
 						echo "<td>";
-                        echo "<span class='label label-danger'>";echo $rs['preference']; echo"</span>";echo"</td>";}
-						elseif($rs['preference']=='Manager'){
+                        echo "<span class='label label-default'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+						elseif($rs['preference']=='Employer'){
 						echo "<td>";
-                        echo "<span class='label label-warning'>";echo $rs['preference']; echo"</span>";echo"</td>";}
+                        echo "<span class='label label-info'>";echo $rs['preference']; echo"</span>";echo"</td>";}
 						echo'<p></p>';
 					echo $rs['date'].'<br/>';
 					echo $rs['venue'];
