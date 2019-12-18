@@ -311,11 +311,9 @@ $(document).ready(function(){
 								<div class="form-group">
 					  				<label class="col-sm-3 control-label">Category</label>
 									  <div class="col-sm-7">
-									  <select id="preference" name="preference" type="text" class="form-control input-sm" >
-									  		 <option value="<?php echo $row['preference']; ?>"><?php echo $row['preference']; ?></option selected>
-										  	 <option value="User">User</option>
-								             <option value="Manager">Manager</option>
-									  	</select>
+									 
+									  		 <input id="preference" name="preference" type="text" class="form-control input-sm"  readonly="readonly" value="<?php echo $row['preference']; ?>"></input>
+										
 									  </div>
 								</div>		
 								

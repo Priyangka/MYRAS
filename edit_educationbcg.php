@@ -54,7 +54,7 @@ $result_sql = mysqli_query($db,$sql_res);
   <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   
-
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -77,6 +77,12 @@ $result_sql = mysqli_query($db,$sql_res);
               <i class="fa fa-home fa-fw"></i>
             </a>
 		  </li>
+
+      <li class="home-menu">
+      <a href="course_main.php">
+             <i class="fa fa-book fa-fw"> </i>Course
+            </a>
+      </li>
            <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                <?php if ($row['image'] == ''){
@@ -134,7 +140,21 @@ $result_sql = mysqli_query($db,$sql_res);
 	   <div class="col-md-10 col-md-offset-1">
 	   <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Education Background</h3>
+               <div class="w3-container">
+                  <div class="w3-row">
+
+                   <a href="edit_profile.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Profile</div>
+    </a>
+    <a href="edit_educationbcg.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Education Background</div>
+    </a>
+    <a href="edit_employmentbcg.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Employment Background</div>
+</a>
+</div>
+ 
+             </div>
             </div>
 			<form id="fileupload" class="form-horizontal" action="add_edu.php" method="POST">
 									<div class="form-group">
@@ -227,14 +247,14 @@ $result_sql = mysqli_query($db,$sql_res);
 				?>
 			</tbody>
 		</table>
-
+</form>
       </div>
       <div class="box-footer">
-                <button type="submit" class="btn btn-default"><a href="profile_details.php?id=<?php echo $rowProfile['id']; ?>" >Cancel </a></button>
+                <button  class="btn btn-default"><a href="profile_details.php?id=<?php echo $rowProfile['id']; ?>" >Cancel </a></button>
               </div>   
 			</div>
 
-			</form> 
+			 
 
 			</div> <!--box -->
       </div>    <!--col-md-12 -->

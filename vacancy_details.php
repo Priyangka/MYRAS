@@ -248,6 +248,12 @@ $(document).ready(function(){
               <i class="fa fa-home fa-fw"></i>
             </a>
 		  </li>
+
+      <li class="home-menu">
+      <a href="course_main.php">
+             <i class="fa fa-book fa-fw"> </i>Course
+            </a>
+      </li>
 		 <!--  <li class="dropdown network-menu">
 		  <a href="networks.html">
               <i class="fa fa-user-o fa-fw"></i>
@@ -317,9 +323,23 @@ $(document).ready(function(){
 
 			<?php
 				$str = $rowsInfo['description'];
-				$strArray = explode('.', $str);
+				$strArray = explode('.', $str);  
+        if ( ! isset($strArray[0] )) {
+   $strArray[0] = null;
+}
+  if ( ! isset($strArray[1] )) {
+   $strArray[1] = null;
+}
+  if ( ! isset($strArray[2] )) {
+   $strArray[2] = null;
+}
 				$str1 = $strArray[0] . '. ' . $strArray[1] . '.'. $strArray[2] . '.';
 				$str2 = $strArray[2] . '.';
+
+      
+
+
+
 			    echo'</a><div class="card-body">';
 				echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";

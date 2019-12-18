@@ -381,7 +381,7 @@ $(document).ready(function(){
                 <li class='item'>";
 				if($rowsInfo['image_banner']!=''){
 	            echo "<img class='img-thumbnail img-responsive center-block' alt='Program Banner' id='blah' src='banner/".$rowsInfo['image_banner']."' style='width:500px; height:300px;object-fit: cover;''/><p></p>";}
-				    echo '<button type="submit" class="col-sm-8 col-md-offset-2 btn btn-warning center">Enroll</button>';
+				    echo"<br/><br/><br/><br/><button type='submit' class='col-sm-8 col-md-offset-2 btn btn-warning center'>Enroll</button>";
 					//echo'<button type="submit" class="col-sm-8 col-md-offset-2 btn btn-warning center">Edit Information</button>';
                     echo "
                     </li>

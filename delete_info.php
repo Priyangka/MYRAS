@@ -11,7 +11,7 @@
 		
 		if (mysqli_query($db, $sql_info)) {
 			//echo "Record deleted successfully";
-			header("Location: main.php");
+			header("Location:main.php");
 		} else {
 			echo "Error deleting record: " . mysqli_error($db);
 		}

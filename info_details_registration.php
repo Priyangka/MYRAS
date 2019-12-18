@@ -152,6 +152,13 @@ $(document).ready(function(){
               <i class="fa fa-home fa-fw"></i>
             </a>
 		  </li>
+
+
+      <li class="home-menu">
+      <a href="course_main.php">
+             <i class="fa fa-book fa-fw"> </i>Course
+            </a>
+      </li>
 		 <!--  <li class="dropdown network-menu">
 		  <a href="networks.html">
               <i class="fa fa-user-o fa-fw"></i>

@@ -103,13 +103,13 @@ $(document).ready(function(){
               <i class="fa fa-home fa-fw"></i>
             </a>
 		  </li>
-
-      
+       
        <li class="home-menu">
       <a href="course_main.php">
              <i class="fa fa-book fa-fw"> </i>Course
             </a>
       </li>
+     
            <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                <?php if ($row['image'] == ''){
@@ -176,7 +176,7 @@ $(document).ready(function(){
   	<div class="col-md-7 col-md-offset-1">
             <div class="panel panel-default">
             <div class="box-header with-border">
-              <h1 class="box-title"><a href="edit_employmentbcg.php">Employment Background</a></h1>
+              <h1 class="box-title">Employment Background</h1>
               <div class="box-tools pull-right">
               </div>
               <!-- /.box-tools -->
@@ -220,7 +220,7 @@ $(document).ready(function(){
 </div><!-- box box-default collapsed-box-->
             <div class="panel panel-default">
             <div class="box-header with-border">
-              <h1 class="box-title"><a href="edit_educationbcg.php">Education Background</a></h1>
+              <h1 class="box-title">Education Background</h1>
               <div class="box-tools pull-right">
               </div>
               <!-- /.box-tools -->
