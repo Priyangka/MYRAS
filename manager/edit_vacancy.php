@@ -378,26 +378,7 @@ $company_id = $rowsInfo['company_id'];
 					        
 						
 						
-						<div class="form-group control-label">
-							<label class="col-sm-2">Required Registration Form?</label>
-								<div class="col-sm-1">
-									<label for="chkY">
-									<input type="radio" id="chkY" name="chk" <?php if($rowsInfo['chk'] =='chkY'){ ?> checked="checked" <?php } ?> value="chkY" />
-									Yes
-									</label>
-									</div>
-									<div class="col-sm-1">
-									<label for="chkN">
-									<input type="radio" id="chkN"  name="chk"  <?php if($rowsInfo['chk'] == 'chkN'){ ?> checked="checked" <?php } ?> value="chkN" />
-									No
-									</label>
-									<div id="dvtext" style="display: none">
-									<a href="reg_form_info.php">
-									<!--<input type="text" id="txtBox" />-->
-							</div>
-							</div>
-						</div>
-							
+					
 								  </div>
 			
 	

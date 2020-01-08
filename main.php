@@ -26,9 +26,18 @@ $rows1 = mysqli_fetch_array($results1);
 $id11 = $rows1['id'];
 $company_id = $rows1['company_id'];
 
+
+$sqlt = "SELECT * FROM vacancy WHERE category!='$category' GROUP BY id";
+$resultst = mysqli_query($db, $sqlt);
+$rowst = mysqli_fetch_array($resultst);
+$id11 = $rowst['id'];
+$company_id = $rowst['company_id'];
+
+
 $sqls2 = "SELECT * FROM vacancy,company WHERE vacancy.company_id=company.id AND vacancy.company_id='$company_id'";
 $results2 = mysqli_query($db, $sqls2);
 $rows2 = mysqli_fetch_array($results2);
+
 
 ?>
 
@@ -276,8 +285,9 @@ $(document).ready(function(){
 				$arraydata = $row['category'];
 			    $arr=explode(',',$arraydata);
 				
-				$sqlv = "SELECT * FROM vacancy,personal_info
+				$sqlv = "SELECT * FROM vacancy,personal_info,company
 				WHERE vacancy.category=personal_info.category 
+			    AND company.id=vacancy.company_id
 			    AND personal_info.id = '$no'
 				AND vacancy.id='$id'
 				GROUP BY vacancy.id desc";	
@@ -293,6 +303,7 @@ $(document).ready(function(){
 				{ 
 			    foreach($arr as $val) 
 				{  
+					//echo $rs['id'];
 			    $id1 = $rs['no'];
 			    $name1 = $rs['name'];
 			    $name2 = $rows1['name'];
@@ -304,14 +315,25 @@ $(document).ready(function(){
 				$Year = date("Y");
 				$string = $rs['description'];
 				$string = strip_tags($string);
+
+			
+				
+			
 								
 				if($id1!=$id2 && $name1!=$name2 && $Year==$getYear && $val == $rss['category']){	
-				
-				echo'<div class="col-md-6">';
+				//echo $rs['company'];
+				echo'<div class="col-md-6">';	
+				$try = "SELECT id,company_banner FROM company WHERE company.no=$rs[no]";
+				$try2 = mysqli_query($db, $try);
+				$tryrow = mysqli_fetch_array($try2);
 				echo'<br/><div class="card pull-left"style="width:100%;height:300;"></a><div class="card-body">';
-				if($rows2['company_banner']!=''){
-	            echo "<img class='card-img-top' alt='Program Banner' src='manager/company/".$rows2['company_banner']."' style='width:100%;height:150px;object-fit: cover;'/>";
+				if($tryrow['company_banner']!=''){
+	            echo "<img class='card-img-top' alt='Program Banner' src='manager/company/".$tryrow['company_banner']."' style='width:100%;height:150px;object-fit: cover;'/>";
 				}
+				if($tryrow['company_banner']==''){
+	            echo "<img class='card-img-top' alt='Program Banner'src='assets/img/company_2.png' style='width:100%;height:150px;object-fit: cover;'/>";
+				}
+
 				echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";
                     echo "<h5 class='card-title' style='height:300;'>".$rs['position'].'';
@@ -332,7 +354,7 @@ $(document).ready(function(){
 						//if the string doesn't contain any space then it will cut without word basis.
 						$string = $endPoint? substr($stringCut, 0, $endPoint):substr($stringCut, 0);
 						//$string .= '... <a href="/this/story">Read More</a>';
-						$string .= ".. <a href=\"info_details.php?info_id=".$rss['id']."\">Read More</a>";
+						
 						echo $string;
 					}
 					else
@@ -373,8 +395,9 @@ $(document).ready(function(){
 			</div>
 			<div class="box-body box-profile">
 			<?php
-				$sqlv= "SELECT * FROM vacancy, vacancy_participant 
+				$sqlv= "SELECT * FROM vacancy, vacancy_participant,company
 				WHERE vacancy.id=vacancy_participant.vacancy_id 
+				AND company.id=vacancy.company_id
 				AND vacancy_participant.no= $no
 				";
 				
@@ -384,7 +407,7 @@ $(document).ready(function(){
 				if($result3 = mysqli_query($db,$sqlv)){
 				if(mysqli_num_rows($result3) > 0){
 				while(($rs=mysqli_fetch_assoc($result3)))
-				{
+				{ 
 				$now = date("m/d/Y");
 				$date =  $rs['date'];	
 				$index++;
@@ -392,11 +415,26 @@ $(document).ready(function(){
 				$string = $rs['description'];
 				$string = strip_tags($string);
 				$status= $rs['status'];
+
 				
+				
+				
+				//$tryrow = mysqli_fetch_array($try2);
+				
+
 				echo '&nbsp'.'<div class="card" style="width:100%;" ></a>';
 				echo '</a><div class="card-body">';
-				if($rows2['company_banner']!=''){
-	            echo "<img class='card-img-top' alt='Program Banner' src='manager/company/".$rows2['company_banner']."' style='width:100%;height:150px;object-fit: cover;'/>";
+				$getbanner = "SELECT id,company_banner FROM company WHERE company.title=$rs[company]";
+
+				$banner = mysqli_query($db, $getbanner);
+				//$tryy=mysqli_fetch_assoc($try2);
+				//echo $getbanner;
+				//echo $try2['company_banner'];
+				if($rs['company_banner']!=''){
+	            echo "<img class='card-img-top' alt='Program Banner' src='manager/company/".$rs['company_banner']."' style='width:100%;height:150px;object-fit: cover;'/>";
+				}
+				if($rs['company_banner']==''){
+	            echo "<img class='card-img-top' alt='Program Banners' src='assets/img/company_2.png' style='width:100%;height:150px;object-fit: cover;''/>";
 				}
 				echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";
@@ -439,7 +477,8 @@ $(document).ready(function(){
 		  </div>
 		  </div>			  
 		  </div>	
-		  <div class="row"> 
+
+	 <div class="row"> 
 
 
 		 
@@ -450,57 +489,57 @@ $(document).ready(function(){
 			<p><h6 class="card-subtitle mb-2 text-muted">This is masterlist of all job vacancy provided by employer</h6></p>
 			</div>
 			</div>
-		   <div class="box-body box-profile">
+		    <div class="box-body box-profile">
        <?php
-			    if($results = mysqli_query($db,$sqlz)){
-				if(mysqli_num_rows($results) > 0){
-				while(($rss=mysqli_fetch_assoc($results))){
+			      if($resultst = mysqli_query($db,$sqlt)){
+				if(mysqli_num_rows($resultst) > 0){
+				while(($rss=mysqli_fetch_assoc($resultst))){
 				$id = $rss['id'];
-
-			    //echo $title;
-				$i = 0;
-				$arraydata = $row['category'];
-			    $arr=explode(',',$arraydata);
 				
-				$sqlv = "SELECT * FROM vacancy ";	
+				$sqlv = "SELECT * FROM vacancy WHERE category!='$category'";	
 					  
-				$sqls1 = "SELECT * FROM vacancy_participant";
-				
+				$sqls1 = "SELECT * FROM vacancy_participant  WHERE name='$name'  AND vacancy_id='$id'";
+
 				$results1 = mysqli_query($db, $sqls1);
 				$rows1 = mysqli_fetch_array($results1);
-				
-				if($result3 = mysqli_query($db,$sqlv)){
-				if(mysqli_num_rows($result3) > 0){
-				while(($rs=mysqli_fetch_assoc($result3)))
-				{ 
-			    foreach($arr as $val) 
-				{  
-			   // $id1 = $rs['no'];
-			    //$name1 = $rs['name'];
-			    //$name2 = $rows1['name'];
-			    //$id2 = $rows1['vacancy_id'];
-				
+
+			
+				 $id1= $rss['id'];
+				  //$name1 = $rs['name'];
+				  //echo $name1;
+			    $name2 = $rows1['name'];
+			   // echo $name2;
+			    $id2 = $rows1['vacancy_id'];
+		
 				$date = $rss['date'];
 				$year = strtotime($date);
 				$getYear = date("Y", $year);
 				$Year = date("Y");
-				$string = $rs['description'];
+				$string = $rss['description'];
 				$string = strip_tags($string);
-								
-				if(  $Year==$getYear){	
-				
+
+				if( $id1!=$id2 && $Year==$getYear ){	
+	
+				$try = "SELECT id,company_banner FROM company WHERE company.no=$rss[no]";
+				$try2 = mysqli_query($db, $try);
+				$tryrow = mysqli_fetch_array($try2);
 				echo'<div class="col-md-6">';
 				echo'<br/><div class="card pull-left"style="width:100%;height:300;"></a><div class="card-body">';
-				if($rows2['company_banner']!=''){
-	            echo "<img class='card-img-top' alt='Program Banner' src='manager/company/".$rows2['company_banner']."' style='width:100%;height:150px;object-fit: cover;'/>";
+				if($tryrow['company_banner']!=''){
+	            echo "<img class='card-img-top' alt='Program Banner' src='manager/company/".$tryrow['company_banner']."' style='width:100%;height:150px;object-fit: cover;'/>";
 				}
+				if($tryrow['company_banner']==''){
+	            echo "<img class='card-img-top' alt='Program Banner'src='assets/img/company_2.png' style='width:100%;height:150px;object-fit: cover;'/>";
+				}
+
+
 				echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";
-                    echo "<h5 class='card-title' style='height:300;'>".$rs['position'].'';
+                    echo "<h5 class='card-title' style='height:300;'>".$rss['position'].'';
   					echo"</a></h5>";
                    	echo"<h6 class='card-subtitle mb-2 text-muted'>";
-					echo $rs['salary'];
-                    echo '<p>'.$rs['company'].'</p>';   
+					echo $rss['salary'];
+                    echo '<p>'.$rss['company'].'</p>';   
                     echo "</h6>";
 					//echo"<p class='card-text text-justify'>";
 					//echo $rs['description'];
@@ -514,7 +553,7 @@ $(document).ready(function(){
 						//if the string doesn't contain any space then it will cut without word basis.
 						$string = $endPoint? substr($stringCut, 0, $endPoint):substr($stringCut, 0);
 						//$string .= '... <a href="/this/story">Read More</a>';
-						$string .= ".. <a href=\"info_details.php?info_id=".$rss['id']."\">Read More</a>";
+						
 						echo $string;
 					}
 					else
@@ -527,8 +566,8 @@ $(document).ready(function(){
 			       echo '</div></div>';				
 				echo '</div>';
 				
-				}}
-				}}}				
+			     }//}
+				//}}}				
 				}}}
 				
 			  ?> 
@@ -543,6 +582,7 @@ $(document).ready(function(){
 
 				
 		</section>
+
 
 
  	</div>

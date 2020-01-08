@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
      $tmp = $_FILES['image']['tmp_name'];
   // Upload file
   move_uploaded_file( $tmp ,$target_dir.$names);
-     header('location:edit_personal_manager.php');
+     header('location:personal_detail.php');
  }
  
 }
@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
  if (mysqli_query($db, $sql)) {
 	   $sql1 = "UPDATE login SET email='$email' WHERE no = $no";
 	   mysqli_query($db, $sql1);
-    header('location:edit_personal_manager.php?id='.$id);
+    header('location:personal_detail.php?id='.$id);
 }  else {
    echo "Error: " . $sql . "<br>" . mysqli_error($db);
 }

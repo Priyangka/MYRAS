@@ -295,31 +295,11 @@ $company_id = $row1['id'];
 							<input type="hidden" name="company_id" id="company_id" value="<?php echo $company_id; ?>">
 					        
 						
-						<div class="form-group control-label">
-							<label class="col-sm-3">Required Registration Form?</label>
-								<div class="col-sm-1">
-									<label for="chkYes">
-									<input type="radio" id="chkYes" value="chkY" name="chk" onclick="ShowHideDiv()" />
-									Yes
-									</label>
-									</div>
-									<div class="col-sm-1">
-									<label for="chkNo">
-									<input type="radio" id="chkNo" value="chkN" name="chk" onclick="ShowHideDiv()" />
-									No
-									</label>
-									<div id="dvtext" style="display: none">
-									<a href="reg_form_info.php"></a>
-									<!--<input type="text" id="txtBox" />-->
-							</div>
-							</div>
-						</div>
-						
-								
+					
               <!-- /.box-body -->
               <div class="box-footer">
              <div class="col-xs-1.9 pull-left">
-            <button type="reset" class="btn btn-block pull-right">Cancel </button>
+            <button type="reset"class="btn btn-block pull-right"><a href="vacancy_list.php"> Cancel </a></button>
           </div>
 			<div class="col-xs-1.5 pull-right">
             <button name="submit" class="btn btn-warning btn-block pull-right">Submit </button>

@@ -61,7 +61,7 @@ $result_sql = mysqli_query($db,$sql_res);
   <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="../plugins/timepicker/bootstrap-timepicker.min.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -239,7 +239,20 @@ $(document).ready(function(){
 	   <div class="col-md-9 col-md-offset-1">
 	   <div class="box box-warning">
             <div class="box-header with-border ">
-              <h3 class="box-title">Profile</h3>
+               <div class="w3-container">
+                  <div class="w3-row">
+                 <a href="edit_personal_manager.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Profile</div>
+    </a>
+    <a href="edit_personal_manager_edu.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Education Background</div>
+    </a>
+    <a href="edit_personal_manager_job.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Employment Background</div>
+</a>
+</div>
+ 
+             </div>
             </div>
 			<form id="fileupload" class="form-horizontal" action="update_personal_manager.php?id=<?php echo $rowProfile['id']; ?>" method="POST" enctype="multipart/form-data">
             		<!-- Text input-->
@@ -251,9 +264,12 @@ $(document).ready(function(){
                                           <label class="col-sm-4 control-label" for="exampleInputFile"></label>
                                         <div class="col-sm-5">
                                             <?php 
-											echo "<img class='profile-user img-circle' alt='User profile picture' id='blah1' src='../uploads/".$row['image']."' width='300px' height='300'/>";
+										                       if ($row['image'] == ''){
+                                 echo "<img alt='User profile picture' id='blah' src='../assets/img/user.png' class='img-circle' width='300' height='300'/>";}
+                                                else{
+                                 echo "<img class='img-circle' alt='User profile picture' id='blah' src='../uploads/".$row['image']."' width='300' height='300'";}
                                             echo "<div class='col-sm-offset-2 col-sm-10'>";
-                                            echo "<input class='input-group' type='file' name='image' onchange='readURL(this);' />";
+                                            echo "<input class='input-group' type='file' name='image' onchange='readURL(this);' /> ";
                                                 ?>
                                         </div>
                                         </div>

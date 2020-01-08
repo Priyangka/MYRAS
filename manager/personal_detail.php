@@ -172,12 +172,18 @@ $row_comp = mysqli_fetch_array($result_comp);
 			 <a href="edit_personal_manager.php" class="btn btn-danger card-link pull-right">Edit Profile </a></h3>
 
             </div>
-            <div class="widget-user-image">
-            <?php echo "<img class='img-circle' alt='User profile picture' id='blah' src='../uploads/".$row_comp['image']."' width='300' height='300'/>"; ?>
+
+<div class="widget-user-image">
+             <?php if ($row['image'] == ''){
+         echo "<img alt='User profile picture' id='blah' src='../assets/img/user.png' class='img-circle' width='300' height='300'/>";}
+               else{
+         echo "<img class='img-circle' alt='User profile picture' id='blah' src='../uploads/".$row['image']."' width='300' height='300'";}?>
+            
+            <!-- <?php //echo "<img class='img-circle' alt='User profile picture' id='blah' src='../uploads/".$row_comp['image']."' width='300' height='300'/>"; ?>-->
             </div>
             <div class="box-footer">
               <div class="row">
-			  <!-- /.col -->
+		
                 <div class="col-sm-12">
                   <div class="description text-center">
                     <h5 class="description-header"><?php echo $row_comp['email']; ?>
@@ -231,15 +237,9 @@ $row_comp = mysqli_fetch_array($result_comp);
 				echo '<div class="form-group">
                 <label>Nationality</label><br/>';
                 echo $rs['nationality']; 
-                echo '</div>
-                <div class="form-group">
-                <label>Username</label><br/>';
-                echo $rs['username']; 
-                echo '</div>';
-				echo '<div class="form-group">
-                <label>Password</label><br/>';
-                echo $rs['password']; 
-				echo"</dd></dd>";
+                echo "</div>";
+                
+				echo"</dd>";
 				echo"</dt>						
 		        </div>
                 </dl>
@@ -260,7 +260,7 @@ $row_comp = mysqli_fetch_array($result_comp);
 	   <!--<ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="300">-->
       <div class="box box-warning">
             <div class="box-header with-border">
-              <h1 class="box-title"><a href="edit_personal_manager_job.php">Employment Background</a></h1>
+              <h1 class="box-title">Employment Background</h1>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -307,7 +307,7 @@ $row_comp = mysqli_fetch_array($result_comp);
 	    <!--<ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="300">-->
         <div class="box box-warning">
             <div class="box-header with-border">
-              <h1 class="box-title"><a href="edit_personal_manager_edu.php">Education Background</a></h1>
+              <h1 class="box-title">Education Background</h1>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>

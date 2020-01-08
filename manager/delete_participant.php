@@ -7,12 +7,12 @@
 		$ids=$_GET['part_id']; 
 		$id=$_GET['info_id']; 
 		//echo $ids;
-		$sql_info = "DELETE  FROM latest_information_participant  WHERE  no='".$ids."'";
+		$sql_info = "DELETE  FROM latest_information_participant  WHERE  vacancy_id='".$id."'";
 		
 		
 		if (mysqli_query($db, $sql_info)) {
 			//echo "Record deleted successfully";
-			header("Location: info_details.php?info_id=$id");
+			 header('location:'. $_SERVER['HTTP_REFERER']);
 		} else {
 			echo "Error deleting record: " . mysqli_error($db);
 		}

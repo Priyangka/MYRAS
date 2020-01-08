@@ -140,32 +140,7 @@ input[type=text]:focus {
               <li><a href="monthly_report_vacancy.php"><i class="fa fa-circle-o"></i>Details</a></li>
             </ul> 
 		</li>
-		<!-- <li class="treeview">
-          <a href="#">
-              <i class="fa fa-list"></i> <span>Registered</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-		  <ul class="treeview-menu">
-              <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
-              <li><a href="user_category.php"><i class="fa fa-circle-o"></i>Courses</a></li>
-            </ul> 
-		</li>
 		
-        <li class="treeview">
-            <a href="#">
-              <i class="fa fa-line-chart"></i> <span>Report</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="info_list.php"><i class="fa fa-circle-o"></i>Catalog</a></li>
-			  <li><a href="monthly_report.php"><i class="fa fa-circle-o"></i>Details</a></li>
-            </ul>           
-        </li> -->
       </ul>
 
     </section>
@@ -192,19 +167,6 @@ input[type=text]:focus {
               <h3 class="box-title">Latest Report</h3>
             </div>
 			
-			<?php
-			/*if($row['email']=='admin@gmail.com'){
-			echo '<div class="box-header with-border">
-					<select id="fetchval" name="fetchby" type="text" class="form-control input-sm" >
-						<option value="All Zones">Select Zone...</option>
-						<option value="North">North</option>
-						<option value="South">South</option>
-						<option value="East">East</option>
-						<option value="West">West</option>
-					</select>
-            </div>';
-			}*/
-			?>
 			<div class="box-header with-border">
 				<input class="form-control"  type="text" id="myInput" placeholder="Search.." title="Type search data"> 			
 			</div>
@@ -217,17 +179,6 @@ input[type=text]:focus {
 				   <?php 
 									
 				        
-						/*$sqlv = "SELECT p.id, p.date, p.venue, p.time_from,p.time_to,p.zone,p.title, IF(ISNULL(b.allBids),0,b.allBids)  AS total  
-								FROM vacancy p
-								LEFT OUTER JOIN  (
-									  SELECT info_id, COUNT(*) AS allBids 
-									  FROM vacancy_participant 
-									  GROUP BY vacancy_id
-									  )b ON b.vacancy_id = p.id
-								ORDER BY p.date ASC
-								";
-						*/
-						//if ($row['id']==$rowsInfo['no'] && $row['manager']==$manager)
 						$sqlv = "SELECT p.id,p.no, p.position, p.salary, p.skills,p.experience,p.category,p.company,p.company_id,p.date, 
 					    IF(ISNULL(b.allBids),0,b.allBids)  AS total  
 								FROM vacancy p 
@@ -328,77 +279,7 @@ input[type=text]:focus {
               </table>
 			  </div>
 			   </div>
-            <!-- /.box-body -->
-            <!-- /.box-header -->
-           <!-- <div class="box-body">
-			<div class="row">
-			<div class="col-xs-12"> <h3 class="box-title"></h3></div></div>
-			<div id="table-container">
-				   <?php 
-				       /* if($row['email']=='admin_east@gmail.com'){
-						$sqlv= "SELECT * FROM personal_info WHERE level='user' AND zone='east'";
-						}
-						elseif($row['email']=='admin_north@gmail.com'){
-						$sqlv= "SELECT * FROM personal_info WHERE level='user' AND zone='north'";
-						}
-						  
-						elseif($row['email']=='admin_south@gmail.com'){
-						$sqlv= "SELECT * FROM personal_info WHERE level='user' AND zone='south'";
-						}
-						
-						elseif($row['email']=='admin_west@gmail.com'){
-						$sqlv= "SELECT * FROM personal_info WHERE level='user' AND zone='south'";
-						}
-						else{
-						$sqlv= "SELECT * FROM personal_info WHERE level='user'";
-						}
-						echo '<table id="myTable1" class="table table-bordered table-striped">
-					    <thead>
-						<tr class="header">
-						  <th>#</th> 
-						  <th>Registered Name</th>
-						  <th>Email</th>
-						  <th>NRIC/Passport</th>
-						  <th>Zone</th>
-						  <th>Change</th>
-						</tr>
-						</thead>
-						<tbody>
-						';
-						$pfilearray=array();
-						$index=0;
-						if($result3 = mysqli_query($db,$sqlv)){
-						if(mysqli_num_rows($result3) > 0){
-						while(($rs=mysqli_fetch_assoc($result3)))
-						{
-						$index++;
-						$id = $rs['id'];
-						echo "<tr><td>"; echo $index; echo"</td>";
-						echo "<td><a href='profile_details.php?id=$id'>"; echo $rs['name']; echo"</td>";
-						echo "<td>"; echo $rs['email']; echo"</td>";
-						echo "<td>"; echo $rs['nric']; echo"</td>";
-						if($rs['zone']=='North'){
-						echo "<td>";
-                        echo "<span class='label label-danger'>";echo $rs['zone']; echo"</span>";echo"</td>";}
-						elseif($rs['zone']=='South'){
-						echo "<td>";
-                        echo "<span class='label label-warning'>";echo $rs['zone']; echo"</span>";echo"</td>";}
-						elseif($rs['zone']=='East'){
-						echo "<td>";
-                        echo "<span class='label label-success'>";echo $rs['zone']; echo"</span>";echo"</td>";}
-						elseif($rs['zone']=='West'){
-						echo "<td>";
-                        echo "<span class='label label-info'>";echo $rs['zone']; echo"</span>";echo"</td>";}
-						echo "<td><a href='user_approval.php?user_id=".$rs['id']."'><i class='fa fa-trash'></i></a></td></tr>";     
-						}}}
-						*/
-				?>
-				
-              </tbody>
-              </table>
-			  </div>
-			   </div>
-            <!-- /.box-body -->
+          
           </div>
           <!-- /.box -->
         </div>

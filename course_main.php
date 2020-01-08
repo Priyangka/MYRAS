@@ -189,7 +189,7 @@ $(document).ready(function(){
              <i class="fa fa-book fa-fw"> </i>Course
             </a>
 		  </li>
-
+            
            <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                <?php if ($row['image'] == ''){
@@ -300,6 +300,9 @@ $(document).ready(function(){
 				echo'<br/><div class="card pull-left"></a><div class="card-body">';
 				if($rs['image_banner']!=''){
 	            echo "<img class='card-img-top' alt='Program Banner' src='admin/banner/".$rs['image_banner']."' style='width:100%;height:150px;object-fit: cover;'/>";
+				}
+				if($rs['image_banner']==''){
+	            echo "<img class='card-img-top' alt='Program Banners' src='assets/img/event.png' style='width:100%;height:150px;object-fit: cover;'/>";
 				}
 				echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";

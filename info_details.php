@@ -1,6 +1,8 @@
 <?php
 session_start();
 include('connection/config.php');
+
+
 $no = $_SESSION['no'];
 $sql = "SELECT * FROM personal_info, login WHERE login.no=personal_info.no AND login.no = '$no' AND personal_info.no='$no'";
 $result = mysqli_query($db, $sql);
@@ -12,12 +14,14 @@ $resultProfile = mysqli_query($db, $sqlProfile);
 $rowProfile = mysqli_fetch_array($resultProfile);
 
 $id=$_GET['info_id']; 
+
+
 $sql_info= "SELECT * FROM latest_information WHERE  id='".$id."'";
 $result_info = mysqli_query($db,$sql_info);
 $rowsInfo = mysqli_fetch_array($result_info);
 
 
-		
+    
 
 ?>
 <!DOCTYPE html>
@@ -124,13 +128,13 @@ $(document).ready(function(){
             }
         }
 
-		$(function () {
-				$('#datetimepicker9').datetimepicker({
-				
-					todayBtn: true
-						});
-						});
-						
+    $(function () {
+        $('#datetimepicker9').datetimepicker({
+        
+          todayBtn: true
+            });
+            });
+            
 </script>
 <style>
   article, aside, figure, footer, header, hgroup, 
@@ -145,14 +149,14 @@ $(document).ready(function(){
 .example2 .navbar-brand>img {padding: 7px 15px;}
 
 .card {
-	top:0;
+  top:0;
     font-size: 1em;
     overflow: hidden;
     padding: 0;
     border: none;
     border-radius: .28571429rem;
     box-shadow: 0 1px 1px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-	background-color:white;
+  background-color:white;
 }
 
 .card-block {
@@ -169,40 +173,40 @@ $(document).ready(function(){
     display: block;
     width: 100%;
     height: auto;
-	border:1px solid rgba(0, 0, 0, .05);
+  border:1px solid rgba(0, 0, 0, .05);
 }
 
 .card-title {
     font-size: 1.28571429em;
     font-weight: 700;
     line-height: 1.2857em;
-	margin-left:0.6em;
-	
+  margin-left:0.6em;
+  
 }
 .card-title1 {
     font-size: 1.28571429em;
     font-weight: 700;
     line-height: 1.2857em;
-	
+  
 }
 
 .card-text {
     clear: both;
     margin-top: .5em;
     color: rgba(0, 0, 0, .68);
-	margin-left:1.0em;
-	margin-right:1.0em;
-	
+  margin-left:1.0em;
+  margin-right:1.0em;
+  
 }
 .card-subtitle {
-	margin-left:1.0em;
-	margin-right:1.0em;
-	
+  margin-left:1.0em;
+  margin-right:1.0em;
+  
 }
 .card-link {
-	margin-left:1.0em;
-	margin-right:1.0em;
-	
+  margin-left:1.0em;
+  margin-right:1.0em;
+  
 }
 
 .card-footer {
@@ -239,46 +243,46 @@ $(document).ready(function(){
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-		  <li class="dropdown home-menu">
-		  <a href="main.php">
+      <li class="dropdown home-menu">
+      <a href="main.php">
               <i class="fa fa-home fa-fw"></i>
             </a>
-		  </li>
+      </li>
 
-      <li class="home-menu">
+       <li class="home-menu">
       <a href="course_main.php">
              <i class="fa fa-book fa-fw"> </i>Course
             </a>
       </li>
-		 <!--  <li class="dropdown network-menu">
-		  <a href="networks.html">
+     <!--  <li class="dropdown network-menu">
+      <a href="networks.html">
               <i class="fa fa-user-o fa-fw"></i>
             </a>
-		  </li>-->
+      </li>-->
   
           <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                <?php if ($row['image'] == ''){
-			   echo "<img class='user-image' alt='User profile picture' id='blah' src='assets/img/user.png' width='125' height='125'/>";}
+         echo "<img class='user-image' alt='User profile picture' id='blah' src='assets/img/user.png' width='125' height='125'/>";}
                else{
-			   echo "<img class='user-image' alt='User profile picture' id='blah' src='uploads/".$row['image']."' width='125' height='125'/>";}?>
+         echo "<img class='user-image' alt='User profile picture' id='blah' src='uploads/".$row['image']."' width='125' height='125'/>";}?>
               <span class="hidden-xs"><?php echo $row['name']; ?></span>
             </a>
-			<ul class="dropdown-menu">
-			 <!-- User image -->
+      <ul class="dropdown-menu">
+       <!-- User image -->
               <li class="user-header">
-				<?php if ($row['image'] == ''){
-			   echo "<img class='img-circle' alt='User profile picture' id='blah' src='assets/img/user.png' width='125' height='125'/>";}
+        <?php if ($row['image'] == ''){
+         echo "<img class='img-circle' alt='User profile picture' id='blah' src='assets/img/user.png' width='125' height='125'/>";}
                else{
-			   echo "<img class='img-circle' alt='User profile picture' id='blah' src='uploads/".$row['image']."' width='125' height='125'/>";}?>
+         echo "<img class='img-circle' alt='User profile picture' id='blah' src='uploads/".$row['image']."' width='125' height='125'/>";}?>
          
                 <p>
                   <span class="hidden-xs"><?php echo $row['name']; ?></span>
                   <!--<small>Toris Sdn.Bhd</small>-->
                 </p>
               </li>
-			   <!-- Menu Body -->
+         <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-6 text-center">
@@ -293,8 +297,8 @@ $(document).ready(function(){
                 </div>
                 <!-- /.row -->
               </li>
-			</ul>
-		</li>
+      </ul>
+    </li>
           <!-- Control Sidebar Toggle Button -->
         </ul>
       </div>
@@ -308,150 +312,111 @@ $(document).ready(function(){
 
     <section class="content">
     
-	     	<!------------------------------------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------------------------------->
        <!-- Info boxes -->
       <div class="row">
-	  
-	  <div class="col-md-10 col-md-offset-1">
-	   <?php 
-	   if($rowsInfo['image_banner']!='' ){
-	   echo "<img class='img-thumbnail img-responsive center-block' alt='Program Banner' id='blah' src='admin/banner/".$rowsInfo['image_banner']."' style='width:100%;height:200px;object-fit: cover;'/><p></p>";}
-		?>
-	   <!--<div class="box box-warning">
+    
+    <div class="col-md-10 col-md-offset-1">
+     <?php 
+     if($rowsInfo['image_banner']!='' ){
+     echo "<img class='img-thumbnail img-responsive center-block' alt='Program Banner' id='blah' src='admin/banner/".$rowsInfo['image_banner']."' style='width:100%;height:200px;object-fit: cover;'/><p></p>";}
+    ?>
+     <!--<div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title"><?php echo $rowsInfo['title'].'&nbsp'; if ($rowsInfo['code_title']!=''){echo '('.$rowsInfo['code_title'].')';} ?></h3>
             </div>
-			<form class="form-horizontal" action="info_insert_participant.php" method="POST" enctype="multipart/form-data">          
-								<div class="box-header with-border">
-								<div class="form-group">
-								 <label class="col-sm-2 control-label">
-								<?php //echo"Date:</label><label class='control-label'> <div class='col-sm-4'>";echo $rowsInfo['date']; ?></label></div></div>
-								<div class="form-group">
-								<label class="col-sm-2 control-label">
-								<?php //if ($rowsInfo['venue']!= " "){echo"Venue:</label><label class='control-label'> <div class='col-sm-12'>";echo $rowsInfo['venue']; }?></label></div></div>
-								<div class="form-group">
-								<label class="col-sm-2 control-label">
-								<?php //if ($rowsInfo['time_from']!= " "&&$rowsInfo['time_to']!= " "){echo"Time:</label><label class='control-label'> <div class='col-sm-12'>";echo $rowsInfo['time_from']; echo'-';  echo $rowsInfo['time_to']; }?></label></div></div>
-								<div class="form-group">
-								<label class="col-sm-2 control-label">
-								<?php //if ($rowsInfo['description']!= " "){echo"Description:</label><label class='control-label'> <div class='col-sm-12'>";echo $rowsInfo['description'];  }?></label></div></div>
-								</div>
-				 
+      <form class="form-horizontal" action="info_insert_participant.php" method="POST" enctype="multipart/form-data">          
+                <div class="box-header with-border">
+                <div class="form-group">
+                 <label class="col-sm-2 control-label">
+                <?php //echo"Date:</label><label class='control-label'> <div class='col-sm-4'>";echo $rowsInfo['date']; ?></label></div></div>
+                <div class="form-group">
+                <label class="col-sm-2 control-label">
+                <?php //if ($rowsInfo['venue']!= " "){echo"Venue:</label><label class='control-label'> <div class='col-sm-12'>";echo $rowsInfo['venue']; }?></label></div></div>
+                <div class="form-group">
+                <label class="col-sm-2 control-label">
+                <?php //if ($rowsInfo['time_from']!= " "&&$rowsInfo['time_to']!= " "){echo"Time:</label><label class='control-label'> <div class='col-sm-12'>";echo $rowsInfo['time_from']; echo'-';  echo $rowsInfo['time_to']; }?></label></div></div>
+                <div class="form-group">
+                <label class="col-sm-2 control-label">
+                <?php //if ($rowsInfo['description']!= " "){echo"Description:</label><label class='control-label'> <div class='col-sm-12'>";echo $rowsInfo['description'];  }?></label></div></div>
+                </div>
+         
               </div>-->
               <!-- /.box-footer -->
-			 
-		   <div class="card sticky-top" >
-		  <div class="col-md-7 ">
-			<div class="card-body"><h5 class="card-title"> <?php echo $rowsInfo['title'].'&nbsp'; if ($rowsInfo['code_title']!=''){echo '('.$rowsInfo['code_title'].')';} ?></h5>
-			</div>
-			<form class="form-horizontal" action="insert_info_participant.php" method="POST" enctype="multipart/form-data">
+       
+       <div class="card sticky-top" >
+      <div class="col-md-7 ">
+      <div class="card-body"><h5 class="card-title"> <?php echo $rowsInfo['title'].'&nbsp'; if ($rowsInfo['code_title']!=''){echo '('.$rowsInfo['code_title'].')';} ?></h5>
+      </div>
+      <form class="form-horizontal" action="insert_info_participant.php" method="POST" enctype="multipart/form-data">
 
-			<?php
-			    echo'</a><div class="card-body">';
-				echo "<ul class='products-list product-list-in-box'>
+      <?php
+          echo'</a><div class="card-body">';
+        echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";
-					echo"<p class='card-text text-justify'>";
-					echo $rowsInfo['description'];
+          echo"<p class='card-text text-justify'>";
+          echo $rowsInfo['description'];
+ echo "</p> </li> </ul>"; 
+             echo '</div>'; 
+           
+          echo'<div class="card-body">';
+        echo "<ul class='products-list product-list-in-box'>
+                <li class='item'>";
+          echo"<p class='card-text text-justify'>"; echo"<label class='control-label'><i class='fa fa-clock-o'></i> ";
+          echo '&nbsp'.$rowsInfo['time_from'].'-'. $rowsInfo['time_to']."</label>";
+            echo '&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp';
+          echo "<label class='control-label'><i class='fa  fa-calendar'></i> ";
+          echo $rowsInfo['date']."</label></p>";
+          echo "<p class='card-text text-justify'><label class='control-label'><i class='fa fa-map-marker'></i>";
+          echo '&nbsp'.$rowsInfo['venue'];
                     echo "</p>
                     </li>
-				    </ul>"; 
-			       echo '</div>';	
-				   
-			    echo'<div class="card-body">';
-				echo "<ul class='products-list product-list-in-box'>
+            </ul>"; 
+             echo '</div>';
+      ?>
+       <br/>  <br/>
+      </div>
+       <div class="col-md-5 ">
+            <?php
+                echo '<input type="hidden"  name="name" id="name" class="form-control" value="'.$row['name'].'">';
+        echo '<input type="hidden" name="phone" id="phone" class="form-control" value="'.$row['phone'].'">';
+        echo '<input type="hidden" name="email" id="email" class="form-control" value="'.$row['email'].'">';
+        echo '<input type="hidden" name="no" id="no" class="form-control" value="'.$no.'">'; 
+          echo '<input type="hidden" name="title" id="title" class="form-control" value="'.$rowsInfo['title'].'">';
+        echo '<input type="hidden" name="info_id" id="info_id" class="form-control" value="'.$id.'">';
+       
+          echo'</a><div class="card-body">';
+        echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";
-					echo"<p class='card-text text-justify'>"; echo"<label class='control-label'><i class='fa fa-clock-o'></i> ";
-					echo '&nbsp'.$rowsInfo['time_from'].'-'. $rowsInfo['time_to']."</label>";
-				    echo '&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp';
-					echo "<label class='control-label'><i class='fa  fa-calendar'></i> ";
-					echo $rowsInfo['date']."</label></p>";
-					echo "<p class='card-text text-justify'><label class='control-label'><i class='fa fa-map-marker'></i>";
-					echo '&nbsp'.$rowsInfo['venue'];
-                    echo "</p>
-                    </li>
-				    </ul>"; 
-			       echo '</div>';
-			?>
-			 <br/>  <br/>
-		  </div>
-		   <div class="col-md-5 ">
-		   			<?php
-			    echo'</a><div class="card-body">';
-				echo "<ul class='products-list product-list-in-box'>
-                <li class='item'>";
-					echo"<br/><br/><br/><br/><button type='submit' class='col-sm-8 col-md-offset-2 btn btn-warning center'>Enroll</button>";
+          echo"<br/><br/><br/><br/><button  type='submit' name='submit' value='submit' class='col-sm-8 col-md-offset-2 btn btn-warning center'>Enroll</button>";
                     echo "
                     </li>
-				    </ul>"; 
-			       echo '</div>';	
-			?>
-		  </div>
-		  </div>
-		  <br/>  <br/>
-		  
-			 
+            </ul>"; 
+             echo '</div>'; 
+      ?>
+      </div>
+      </div>
+      <br/>  <br/>
+      
+       
           
-			</div> <!--box -->
+      </div> <!--box -->
       </div>    <!--col-md-12 -->
-	  	     	<!------------------------------------------------------------------------------------------------------------------------------------->
+            <!------------------------------------------------------------------------------------------------------------------------------------->
        <!-- Info boxes -->
-	   <?php 
-	   
-		if ($rowsInfo['chk']=='chkY'){
-		echo 	
-      '<div class="row">
-	  <div class="col-md-10 col-md-offset-1">
-	   <div class="box box-warning hidden">
-            <div class="box-header with-border">';         
-				               
-				    echo '<h3 class="box-title">Registration Form</div>
-			        <form class="form-horizontal" action="insert_info_participant.php" method="POST" enctype="multipart/form-data">';
-					 echo "<div class='box-body'>
-                        
-						<div class='form-group'>
-					    <label for='inputEmail3' class='col-sm-2 control-label'>Name</label>
-						<div class='col-sm-4'>";
-						echo '<input type="text" name="name"  class="form-control" value="' . htmlspecialchars($row['name']) . '"></div></div>';
-		
-					echo"<div class='form-group'>
-					    <label for='inputEmail3' class='col-sm-2 control-label'>Phone Number</label>
-						<div class='col-sm-4'>";
-					echo '<input type="text" name="phone"  class="form-control" value="' . htmlspecialchars($row['phone']) . '"></div></div>'; 
-					
-					echo"<div class='form-group'>
-					    <label for='inputEmail3' class='col-sm-2 control-label'>Email</label>
-						<div class='col-sm-4'>";
-					echo '<input type="text" name="email"  class="form-control" value="' . htmlspecialchars($row['email']) . '"></div></div>'; 
-
-					
-					echo '<input type="hidden" name="no" id="no" class="form-control" value="' . htmlspecialchars($no) . '">'; 
-					echo '<input type="hidden" name="info_id" id="info_id" class="form-control" value="' . htmlspecialchars($rowsInfo['id']) . '">'; 
-					echo '<input type="hidden" name="title" id="title" class="form-control" value="' . htmlspecialchars($rowsInfo['title']) . '">'; 
-
-				echo '
-				<div class="form-group">
-					<label class="col-sm-2 control-label"></label>  
-									  <div class="col-sm-3">
-								      <button type="submit" class="col-sm-6 btn btn-warning">Enroll</button>
-									  </div>
-                                      </div>	
-                <div class="box-footer">
-                </div>';
-			  
-			  }
-					?>		
+     
                  
-			  
+        
               </div>
               <!-- /.box-footer -->
             </form>
-			</div> <!--box -->
+      </div> <!--box -->
       </div>    <!--col-md-12 -->
-	  
-	  
-	  
-	  </div>      <!-- row --> 
-	 
+    
+    
+    
+    </div>      <!-- row --> 
+   
     </section>
 </div>
 </div>

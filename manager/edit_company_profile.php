@@ -409,11 +409,17 @@ $rowsInfo = mysqli_fetch_array($result_info);
                                         <label class="col-sm-4 control-label" for="exampleInputFile"></label>
                                          <div class="form-group">
                                           <label class="col-sm-4 control-label" for="exampleInputFile"></label>
+
+
+
                                         
-                                            <?php 
-											$image_src2 = $rowsInfo['company_banner'];
-											echo "<img class='img-thumbnail' alt='Program Banner' id='blah1' src='company/".$rowsInfo['company_banner']."'   style='width:500px; height:300px;object-fit: cover;'/><p></p>";
-					                        echo "<div class='col-sm-offset-3 col-sm-9'>";
+                                            <?php   
+                                            $image_src2 = $rowsInfo['company_banner'];
+                                            if ($rowsInfo['company_banner'] == ''){
+                										 echo "<img class='img-thumbnail' alt='Program Banners' id='blah'  src='../assets/img/company_2.png' style='width:500px; height:300px;' />";
+                											}
+                                      else{echo "<img  alt='Program Banners' id='blah1' src='company/".$rowsInfo['company_banner']."'   style='width:500px; height:300px;'/><p></p>";}
+                                         echo "<div class='col-sm-offset-3 col-sm-9'>";
                                             echo "<input class='input-group' type='file' id='file' name='image' onchange='readURL(this);' />";
                                                 ?> 
 

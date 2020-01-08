@@ -61,7 +61,7 @@ $result_sql = mysqli_query($db,$sql_res);
   <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="../plugins/timepicker/bootstrap-timepicker.min.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -240,7 +240,20 @@ $(document).ready(function(){
      <div class="col-md-9 col-md-offset-1">
      <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Job</h3>
+              <div class="w3-container">
+                  <div class="w3-row">
+                   <a href="edit_personal_manager.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Profile</div>
+    </a>
+    <a href="edit_personal_manager_edu.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Education Background</div>
+    </a>
+    <a href="edit_personal_manager_job.php">
+      <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Employment Background</div>
+</a>
+</div>
+ 
+             </div>
             </div>
       <form id="fileupload" class="form-horizontal" action="add_experience_manager.php" method="POST">
                   <div class="form-group">

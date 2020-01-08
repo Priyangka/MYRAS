@@ -27,6 +27,8 @@ if(isset($_POST["username"], $_POST["password"]))
 									$_SESSION['no'] = $row['no'];
 								header("location: admin/user_list.php"); 
 								}
+							elseif($row['level']=='Employer'){
+								header("location: manager/course_offer.php"); }
 							elseif($row['level']=='manager'){
 								header("location: manager/course_offer.php"); }
 							else{

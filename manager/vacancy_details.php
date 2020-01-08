@@ -401,7 +401,7 @@ $(document).ready(function(){
 		</form>
 		  <br/>
 		<?php
-	  	if($rowsInfo['chk']=='chkY'){
+	  
 	    echo' 
 	    <div class="box box-warning">
         <div class="box-header with-border"> 
@@ -423,7 +423,7 @@ $(document).ready(function(){
                 <tbody>';
 						$sqlv= "SELECT * FROM vacancy_participant, personal_info
 						WHERE vacancy_participant.vacancy_id ='$id'
-						AND level='user'
+						AND level='Job Seeker'
 						AND vacancy_participant.no = personal_info.id";
 						$pfilearray=array();
 						$index=0;
@@ -434,43 +434,34 @@ $(document).ready(function(){
 						$index++;
 						$ids = $rs['id'];
 						$ids1 = $rs['no'];
+            $vac=$rs['vacancy_id'];
 						$status = $rs['status'];
 						echo "<tr><td>"; echo $index; echo"</td>";
-						echo "<td><a  href='profile_details.php?id=$ids1' onclick='setstatus()' >" ; echo $rs['name']; echo"</a></td>";
+						echo "<td><a  href='profile_details.php?id=$ids1'  >" ; echo $rs['name']; echo"</a></td>";
 						echo "<td>"; echo $rs['phone'];  echo"</td>";
 						echo "<td>"; echo $rs['email'];  echo"</td>";
             //if($rs['status']=="In-Process")
             //{echo "<td>"; echo $rs['status'];  echo"</td>";}
            // else
             {echo "<td>"; 
-          echo"<form  action='update_status.php?no=$ids1' method='POST' >";
+          echo"<form  action='update_status.php?no=$ids1&vac=$vac' method='POST' >";
            echo "<select id='status' name='status'  onchange='yesnoCheck(this);'> ";  
            echo "<option>"; echo $rs['status']; echo"</option selected>";  
            echo" <option value='Reviewed'>" ; echo'Reviewed';  echo" </option>" ;                                   
            echo" <option value='Accepted'>" ; echo'Accepted';  echo" </option>" ;
-           echo" <option value='Rejected'>" ; echo'Rejected';  echo" </option>" ;
-           
+           echo" <option value='Rejected'>" ; echo'Rejected';  echo" </option>" ;   
             echo "</select> "; 
               echo "<button name='submit'>";echo'Submit'; echo" </button>";
-            echo"</td>";}
+            echo"</td> </form>";}
 
-						echo "<td><a id = 'adds' href='delete_participant.php?info_id=$id&part_id=$ids'><i class='fa fa-trash'></i></a>";
+						echo "<td><a id = 'adds' href='delete_vacan_participant.php?info_id=$ids1&part_id=$ids'><i class='fa fa-trash'></i></a>";
 						echo"</td>";
           
 
-            // function setstatus() {  
-                  
-                 // if ($rs['status']=="In-Process")
-      
-      
-                  //$sql = "UPDATE vacancy_participant SET status='Reviewed' WHERE no='$no'";
-
-                  
-                //}
 	   }}}
 						echo '</tbody>
 					  </table></div></div>';
-					}
+					
 				?>
 			</div> <!--box -->
 				<input type="hidden" name="nric" id="nric" value="<?php echo $nric; ?>">
@@ -481,18 +472,7 @@ $(document).ready(function(){
 </div>
 </div>
   
-            <script type="text/javascript">
-
-                function setstatus() {  
-                  
-                  if ($rs['status']=="In-Process")
-                 { <?php
-      
-                  $sql = "UPDATE vacancy_participant SET status='Reviewed' WHERE id='$id'";
-
-                   ?>}
-                }
-            </script>
+          
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

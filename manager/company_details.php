@@ -369,6 +369,9 @@ $(document).ready(function(){
                 <li class='item'>";
 				if($rowsInfo['company_banner']!=''){
 	            echo "<img class='img-thumbnail img-responsive center-block' alt='Program Banner' id='blah' src='company/".$rowsInfo['company_banner']."' style='width:500px; height:300px;object-fit: cover;''/><p></p>";}
+        if($rowsInfo['company_banner']==''){
+              echo "<img class='img-thumbnail img-responsive center-block' alt='Program Banner' id='blah'  src='../assets/img/company_2.png' style='width:500px; height:300px;object-fit: cover;''/><p></p>";}
+
 				if ($rowsInfo['manager']!= $row['name']) {
 				echo "<a href=\"add_company_profile.php\"   class='col-xs-3 col-md-6 col-md-push-3 btn btn-warning card-link center'>Add Company Profile</a>";
 				}

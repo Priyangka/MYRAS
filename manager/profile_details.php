@@ -165,7 +165,13 @@ $row_comp = mysqli_fetch_array($result_comp);
               <h3 class="widget-user-username"><?php echo $row_comp['name']; ?></h3>
             </div>
             <div class="widget-user-image">
-            <?php echo "<img class='img-circle' alt='User profile picture' id='blah' src='../uploads/".$row_comp['image']."' width='300' height='300'/>"; ?>
+
+            <?php 
+              if($row_comp['image']!="") {
+            echo "<img class='img-circle' alt='User profile picture' id='blah' src='../uploads/".$row_comp['image']."' width='300' height='300'/>"; }
+          else
+              echo "<img class='img-circle' alt='User profile picture' id='blah'  src='../assets/img/user.png'  width='300' height='300'/>"
+            ?>
             </div>
             <div class="box-footer">
               <div class="row">

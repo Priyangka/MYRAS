@@ -12,19 +12,28 @@ $status=$_POST['status'];
 
 
 $sql1 = 
-"INSERT INTO vacancy_participant (name,position,email,no,vacancy_id,phone,status) 
+" INSERT  ignore INTO vacancy_participant (name,position,email,no,vacancy_id,phone,status) 
 VALUES ('$name', '$position','$email', '$no','$vacancy_id','$phone','In-Process')";
 
+  $check="SELECT name,no,vacancy_id from vacancy_participant where name='$name' and no='$no' and vacancy_id='$vacancy_id'";
 
 //if (mysqli_query($db, $sql1) && mysqli_query($db, $sql2)) {
-if (mysqli_query($db, $sql1)){
+if (mysqli_query($db, $check))
+{
+ 
+   $count=mysqli_num_rows (mysqli_query($db, $check));
+   if($count>0)
+   	{      header('location:main.php');
 
-   // header('location:https://www.billplz.com/b_m88mvx7');
-    header('location:main.php');
-    //echo "New record created successfully";
-} else {
-    echo "Error: " . $sql1 . "<br>" . mysqli_error($db);
-}
+   }
+	else 
+	{
+		if (mysqli_query($db, $sql1))
+			{header('location:main.php'); }
+		else
+		    {echo "Error: " . $sql1 . "<br>" . mysqli_error($db);}
+    }
+   }
 
 mysqli_close($db);
 

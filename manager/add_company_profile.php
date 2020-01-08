@@ -32,6 +32,7 @@ $result1 = mysqli_query($db, $sql1);
 $row1 = mysqli_fetch_array($result1);
 $image_src2 = $row['image'];
 
+
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -216,7 +217,8 @@ $image_src2 = $row['image'];
                                           <label class="col-sm-4 control-label" for="exampleInputFile"></label>
                                         <div class="col-sm-5">
                                             <?php 
-											echo "<img class='img-thumbnail' alt='Program Banner' id='blah1' src='company/'   style='width:500px; height:300px;object-fit: cover;'/><p></p>";
+
+											echo "<img class='img-thumbnail' alt='Choose an image' id='blah1' src='company/'   style='width:500px; height:300px;object-fit: cover;'/><p></p>";
 					                        echo "<div class='col-sm-offset-2 col-sm-10'>";
                                             echo "<input class='input-group' type='file' id='file' name='file' onchange='readURL(this);' />";
                                                 ?>
@@ -330,7 +332,7 @@ $image_src2 = $row['image'];
               <!-- /.box-body -->
               <div class="box-footer">
              <div class="col-xs-1.9 pull-left">
-             <a href="#" class="btn btn-block btn-default"> &nbsp Cancel &nbsp</a>
+             <a href="company_details.php" class="btn btn-block btn-default"> &nbsp Cancel &nbsp</a>
           </div>
 			<div class="col-xs-1.5 pull-right">
             <button name="submit" class="btn btn-warning btn-block pull-right">Submit </button>

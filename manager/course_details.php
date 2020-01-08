@@ -113,13 +113,13 @@ $(document).ready(function(){
             }
         }
 
-		$(function () {
-				$('#datetimepicker9').datetimepicker({
-				
-					todayBtn: true
-						});
-						});
-						
+    $(function () {
+        $('#datetimepicker9').datetimepicker({
+        
+          todayBtn: true
+            });
+            });
+            
 </script>
 <style>
   article, aside, figure, footer, header, hgroup, 
@@ -143,14 +143,14 @@ $(document).ready(function(){
 .example2 .navbar-brand>img {padding: 7px 15px;}
 
 .card {
-	top:0;
+  top:0;
     font-size: 1em;
     overflow: hidden;
     padding: 0;
     border: none;
     border-radius: .28571429rem;
     box-shadow: 0 1px 1px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-	background-color:white;
+  background-color:white;
 }
 
 .card-block {
@@ -167,40 +167,40 @@ $(document).ready(function(){
     display: block;
     width: 100%;
     height: auto;
-	border:1px solid rgba(0, 0, 0, .05);
+  border:1px solid rgba(0, 0, 0, .05);
 }
 
 .card-title {
     font-size: 1.28571429em;
     font-weight: 700;
     line-height: 1.2857em;
-	margin-left:0.6em;
-	
+  margin-left:0.6em;
+  
 }
 .card-title1 {
     font-size: 1.28571429em;
     font-weight: 700;
     line-height: 1.2857em;
-	
+  
 }
 
 .card-text {
     clear: both;
     margin-top: .5em;
     color: rgba(0, 0, 0, .68);
-	margin-left:1.0em;
-	margin-right:1.0em;
-	
+  margin-left:1.0em;
+  margin-right:1.0em;
+  
 }
 .card-subtitle {
-	margin-left:1.0em;
-	margin-right:1.0em;
-	
+  margin-left:1.0em;
+  margin-right:1.0em;
+  
 }
 .card-link {
-	margin-left:1.0em;
-	margin-right:1.0em;
-	
+  margin-left:1.0em;
+  margin-right:1.0em;
+  
 }
 
 .card-footer {
@@ -252,15 +252,15 @@ $(document).ready(function(){
       <br/>
       <div class="user-panel">
         <div class="pull-left image">
-		  <?php if ($row['image'] == ''){
-			   echo "<img alt='User profile picture' id='blah' src='../assets/img/user.png' class='img-circle' height='50%' width='50%'/>";}
+      <?php if ($row['image'] == ''){
+         echo "<img alt='User profile picture' id='blah' src='../assets/img/user.png' class='img-circle' height='50%' width='50%'/>";}
                else{
-			   echo "<img class='img-circle' alt='User profile picture' id='blah' src='../uploads/".$row['image']."' height='50%' width='50%'/>";}?>
+         echo "<img class='img-circle' alt='User profile picture' id='blah' src='../uploads/".$row['image']."' height='50%' width='50%'/>";}?>
         </div>
         <div class="pull-left info">
           <p>Employer :
- 		   <span class="hidden-xs"> <a href="profile_details.php"><?php echo $row['username']; ?></a></span></p>
-		  <a href="../logout.php">
+       <span class="hidden-xs"> <a href="profile_details.php"><?php echo $row['username']; ?></a></span></p>
+      <a href="../logout.php">
             <i class="fa fa-sign-out"></i> <span>Log Out</span>
           </a><br/>
         </div>
@@ -268,46 +268,46 @@ $(document).ready(function(){
       <br/>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
-		<li class="treeview">
+    <li class="treeview">
           <a href="#">
               <i class="fa fa-home"></i><span>Home</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
-		  <ul class="treeview-menu">
+      <ul class="treeview-menu">
               <li><a href="course_offer.php"><i class="fa fa-circle-o"></i>GCP Courses</a></li>
               <li><a href="personal_detail.php"><i class="fa fa-circle-o"></i>Profile</a></li>
               <li><a href="company_details.php"><i class="fa fa-circle-o"></i>Company Profile</a></li>
             </ul> 
-		</li>
-		<li class="treeview">
+    </li>
+    <li class="treeview">
           <a href="#">
               <i class="fa fa-list"></i> <span>Vacancy</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
-		  <ul class="treeview-menu">
+      <ul class="treeview-menu">
               <li><a href="vacancy_list.php"><i class="fa fa-circle-o"></i>Catalog</a></li>
               <li><a href="registered_vacancy.php"><i class="fa fa-circle-o"></i>Registered</a></li>
               <li><a href="monthly_report_vacancy.php"><i class="fa fa-circle-o"></i>Details</a></li>
             </ul> 
-		</li>
-		<!-- <li class="treeview">
+    </li>
+    <!-- <li class="treeview">
           <a href="#">
               <i class="fa fa-list"></i> <span>Registered</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
-		  <ul class="treeview-menu">
+      <ul class="treeview-menu">
               <li><a href="user_list.php"><i class="fa fa-circle-o"></i>User</a></li>
               <li><a href="user_category.php"><i class="fa fa-circle-o"></i>User By Category</a></li>
               <li><a href="user_category.php"><i class="fa fa-circle-o"></i>Courses</a></li>
             </ul> 
-		</li>
-		
+    </li>
+    
         <li class="treeview">
             <a href="#">
               <i class="fa fa-line-chart"></i> <span>Report</span>
@@ -317,7 +317,7 @@ $(document).ready(function(){
             </a>
             <ul class="treeview-menu">
                 <li><a href="info_list.php"><i class="fa fa-circle-o"></i>Catalog</a></li>
-			  <li><a href="monthly_report.php"><i class="fa fa-circle-o"></i>Details</a></li>
+        <li><a href="monthly_report.php"><i class="fa fa-circle-o"></i>Details</a></li>
             </ul>           
         </li> -->
       </ul>
@@ -339,113 +339,84 @@ $(document).ready(function(){
     <section class="content">
       <!-- Info boxes -->
       <div class="row">
-	  <div class="col-xs-12">
-						<form class="form-horizontal" action="insert_info_participant.php" method="POST" enctype="multipart/form-data">
+    <div class="col-xs-12">
+            <form class="form-horizontal" action="insert_info_participant.php" method="POST" enctype="multipart/form-data">
 
            <div class="card sticky-top" >
-		  <div class="col-md-7 ">
-			<div class="card-body"><h5 class="card-title"> <?php echo $rowsInfo['title'].'&nbsp'; if ($rowsInfo['code_title']!=''){echo '('.$rowsInfo['code_title'].')';} ?></h5>
-			</div>
+      <div class="col-md-7 ">
+      <div class="card-body"><h5 class="card-title"> <?php echo $rowsInfo['title'].'&nbsp'; if ($rowsInfo['code_title']!=''){echo '('.$rowsInfo['code_title'].')';} ?></h5>
+      </div>
 
-			<?php
-			    echo'</a><div class="card-body">';
-				echo "<ul class='products-list product-list-in-box'>
+      <?php
+          echo'</a><div class="card-body">';
+        echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";
-					echo"<p class='card-text text-justify'>";
-					echo $rowsInfo['description'];
+          echo"<p class='card-text text-justify'>";
+          echo $rowsInfo['description'];
                     echo "</p>
                     </li>
-				    </ul>"; 
-			       echo '</div>';	
-				   
-			    echo'<div class="card-body">';
-				echo "<ul class='products-list product-list-in-box'>
+            </ul>"; 
+             echo '</div>'; 
+           
+          echo'<div class="card-body">';
+        echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";
-					echo"<p class='card-text text-justify'>"; echo"<label class='control-label'><i class='fa fa-clock-o'></i> ";
-					echo '&nbsp'.$rowsInfo['time_from'].'-'. $rowsInfo['time_to']."</label>";
-				    echo '&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp';
-					echo "<label class='control-label'><i class='fa  fa-calendar'></i> ";
-					echo $rowsInfo['date']."</label></p>";
-					echo "<p class='card-text text-justify'><label class='control-label'><i class='fa fa-map-marker'></i>";
-					echo '&nbsp'.$rowsInfo['venue'];
+          echo"<p class='card-text text-justify'>"; echo"<label class='control-label'><i class='fa fa-clock-o'></i> ";
+          echo '&nbsp'.$rowsInfo['time_from'].'-'. $rowsInfo['time_to']."</label>";
+            echo '&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp'.'&nbsp';
+          echo "<label class='control-label'><i class='fa  fa-calendar'></i> ";
+          echo $rowsInfo['date']."</label></p>";
+          echo "<p class='card-text text-justify'><label class='control-label'><i class='fa fa-map-marker'></i>";
+          echo '&nbsp'.$rowsInfo['venue'];
                     echo "</p>
                     </li>
-				    </ul>"; 
-			       echo '</div>';
-			?>
-		  </div>
-		   <div class="col-md-5 ">
-		   		<?php
-			    echo'<div class="card-body">';
-				echo "<ul class='products-list product-list-in-box'>
+            </ul>"; 
+             echo '</div>';
+      ?>
+      </div>
+       <div class="col-md-5 ">
+          <?php
+          echo'<div class="card-body">';
+        echo "<ul class='products-list product-list-in-box'>
                 <li class='item'>";
-				if($rowsInfo['image_banner']!=''){
-	            echo "<img class='img-thumbnail img-responsive center-block' alt='Program Banner' id='blah' src='banner/".$rowsInfo['image_banner']."' style='width:500px; height:300px;object-fit: cover;''/><p></p>";}
-				    echo"<br/><br/><br/><br/><button type='submit' class='col-sm-8 col-md-offset-2 btn btn-warning center'>Enroll</button>";
-					//echo'<button type="submit" class="col-sm-8 col-md-offset-2 btn btn-warning center">Edit Information</button>';
+        if($rowsInfo['image_banner']!=''){
+              echo "<img class='img-thumbnail img-responsive center-block' alt='Program Banner' id='blah' src='../admin/banner/".$rowsInfo['image_banner']."' style='width:500px; height:300px;object-fit: cover;''/><p></p>";}
+
+ echo '<input type="hidden"  name="name" id="name" class="form-control" value="'.$row['name'].'">';
+        echo '<input  type="hidden" name="phone" id="phone" class="form-control" value="'.$row['phone'].'">';
+        echo '<input type="hidden"  name="email" id="email" class="form-control" value="'.$row['email'].'">';
+        echo '<input  type="hidden" name="no" id="no" class="form-control" value="'.$no.'">'; 
+          echo '<input  type="hidden" name="title" id="title" class="form-control" value="'.$rowsInfo['title'].'">';
+        echo '<input type="hidden" name="info_id" id="info_id" class="form-control" value="'.$id.'">';
+       
+
+            echo"<br/><br/><br/><br/><button  type='submit' name='submit' value='submit' class='col-sm-8 col-md-offset-2 btn btn-warning center'>Enroll</button>";
+          //echo'<button type="submit" class="col-sm-8 col-md-offset-2 btn btn-warning center">Edit Information</button>';
                     echo "
                     </li>
-				    </ul>"; 
-			       echo '</div>';	
-			?>
-		  </div>
-		  </div>
-		  <br/>
-			</div> <!--box -->
-				<input type="hidden" name="no" id="no" value="<?php echo $no; ?>">
-			</div> <!--box -->
-			<div class="row" >
-		    <div class="col-xs-12">
-			<div class="card sticky-top" >
-			<div class="card-body">
-            <?php
-					if ($rowsInfo['chk']=='chkY'){
-						echo '<div class="box-header with-border">';         
-						echo '<h3 class="box-title">Registration Form</div>
-						';
-						echo '</div>';
-						
-						echo '<div class="box-body">';
-						echo "<div class='form-group'>
-					    <label for='inputEmail3' class='col-sm-2 control-label'>Name</label>
-						<div class='col-sm-4'>";
-						echo '<input type="text" name="name"  class="form-control" value="' . $row['name']. '"></div></div><br/><br/>';
-						
-						echo "<div class='form-group'>
-					    <label for='inputEmail3' class='col-sm-2 control-label'>Phone</label>
-						<div class='col-sm-4'>";
-						echo '<input type="text" name="phone"  class="form-control" value="' . $row['phone']. '"></div></div><br/><br/>';
-												
-						echo "<div class='form-group'>
-					    <label for='inputEmail3' class='col-sm-2 control-label'>Email</label>
-						<div class='col-sm-4'>";
-						
-						echo '<input type="text" name="email"  class="form-control" value="' . $row['email']. '"></div></div><br/><br/>';
-						echo '<input type="hidden" name="no" id="no" class="form-control" value="' . htmlspecialchars($no) . '">'; 
-						echo '<input type="hidden" name="info_id" id="info_id" class="form-control" value="' . htmlspecialchars($rowsInfo['id']) . '">'; 
-						echo '<input type="hidden" name="title" id="title" class="form-control" value="' . htmlspecialchars($rowsInfo['title']) . '">'; 
-						
-						echo '</div>';
-					}
-
-			?>
-			</div>
-			</div>
-			</div>
-			</div>
+            </ul>"; 
+             echo '</div>'; 
+      ?>
+      </div>
+      </div>
+      <br/>
+      </div> <!--box -->
+        <input type="hidden" name="no" id="no" value="<?php echo $no; ?>">
+      </div> <!--box -->
+    
 
                  
-			  
+        
               </div>
               </div>
               <!-- /.box-footer -->
             </form>
-			</div> <!--box -->
+      </div> <!--box -->
       </div>    <!--col-md-12 -->
-	
-	  </div>  
+  
+    </div>  
       </div>    <!--col-md-12 -->
-	  </div> 
+    </div> 
     </section>
 </div>
 </div>
@@ -473,11 +444,11 @@ jQuery(function ($) {
                     type: "table",
                     fields: {
                                               
-						Name: { type: String },
-						Phone: { type: String },
+            Name: { type: String },
+            Phone: { type: String },
                         Email: { type: String },
                        
-						
+            
                     }
                 }
             });
@@ -492,39 +463,39 @@ jQuery(function ($) {
                             rows: [
                                 {
                                     cells: [
-										{
+                    {
                                             style: {
                                                 bold: true
                                             },
                                             type: String,
                                             value: "Name"
                                         },
-										{
+                    {
                                             style: {
                                                 bold: true
                                             },
                                             type: String,
                                             value: "Phone"
                                         },
-										{
+                    {
                                             style: {
                                                 bold: true
                                             },
                                             type: String,
                                             value: "Email"
                                         },
-										
-										
-		
-										
+                    
+                    
+    
+                    
                                     ]
                                 }
                             ].concat($.map(data, function(item) {
                                 return {
                                     cells: [
                                                                          
-										{ type: String, value: item.Name },
-										{ type: String, value: item.Phone },
+                    { type: String, value: item.Name },
+                    { type: String, value: item.Phone },
                                         { type: String, value: item.Email },
                                       
 
@@ -539,9 +510,9 @@ jQuery(function ($) {
             });
         });
     });
-	</script>
+  </script>
 </body>
-</html>	
+</html> 
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

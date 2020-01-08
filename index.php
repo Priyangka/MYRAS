@@ -135,8 +135,8 @@
 						<div class="form-group">
 							<select class="form-control select2" id="preference" name="preference" type="text"style="width: 100%;" onchange="showfield(this.options[this.selectedIndex].value)">>
 							   <option selected="selected" value="">Choose Category</option>
-								<option value="Student">Student</option>
-								<option value="Manager">Employer</option>
+								<option value="Job Seeker">Job Seeker</option>
+								<option value="Employer">Employer</option>
 							</select>
 					    </div>
 						<script type="text/javascript">
